@@ -5,11 +5,10 @@ const config = require('config')
 //connect db 
 const connectDB = async ()=> {
     try {
-        await mangoose.connect(config.get("MONGO URI"),{ useNewUrlParser : true, 
-                                        useUnififiedTopology : true});
+        await mongoose.connect(config.get("MONGO_URI"),{ useNewUrlParser: true , useUnifiedTopology: true});
         console.log("Mongoose connected...")
     } catch (error) {
         console.log(error)
     }
 };
-module:exports = connectDB
+module.exports = connectDB
