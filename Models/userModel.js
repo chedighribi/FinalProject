@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const schema = mongoose.schema;
+const schema = mongoose.Schema;
 
 const userSchema = new schema({
     fullname : {
@@ -22,6 +22,10 @@ const userSchema = new schema({
     },
     adress : {
         type : String
+    },
+    admin : {
+        type : Boolean,
+        default: false
     }
 
 })
