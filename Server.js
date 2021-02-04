@@ -15,6 +15,9 @@ connectDB();
 //routes
 app.use('/api', require ("./Routes/user"));
 app.use('/api', require ("./Routes/tata"));
+app.use('/api', require ("./Routes/lunch"));
+app.use('/api', require ("./Routes/box"));
+app.use('/api', require ("./Routes/traiteur"));
 
 
 //create a port
