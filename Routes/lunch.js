@@ -19,6 +19,25 @@ router.post('/order', async (req,res)=>{
     }
 });
 
+router.get('/lunch', async(req,res)=>{
+    try {
+        const lunchs = await lunch.find();
+        res.json({msg:'lunch fetched', lunchs})
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+router.delete('/deletelunch/:_id', async (req,res)=>{
+    const {_id}= req.params;
+    try {
+        const lunchdeleted = await lunch.findOneAndDelete({_id});
+        res.json({msg:'lunch deleted', lunchdeleted})
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 
 
 module.exports = router;
