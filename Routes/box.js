@@ -3,7 +3,7 @@ const router = require('express').Router();
 
 const boxes = require ('../Models/boxModel');
 
-router.post('/box', async (req,res)=>{
+router.post('/addbox', async (req,res)=>{
     const {price, name, ingredient, madeby}= req.body;
     try {
         const newBox = new boxes ({
@@ -19,7 +19,7 @@ router.post('/box', async (req,res)=>{
     }
 });
 
-router.get('/lunch' , async (req,res)=>{
+router.get('/box' , async (req,res)=>{
     try {
         const box = await boxes.find();
         res.json({msg:'boxes fetched',box})
@@ -28,7 +28,7 @@ router.get('/lunch' , async (req,res)=>{
     }
 })
 
-router.put('/editlunch/:_id' , async (req,res)=>{
+router.put('/editbox/:_id' , async (req,res)=>{
     const {_id} = req.params;
     try {
         const boxedited = await box.findOneAndUpdate({_id}, {$set : req.body});
