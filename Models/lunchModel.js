@@ -12,10 +12,14 @@ const lunchSchema = new schema({
     },
     phone : {
         type : Number,
-        required : true,
+        required : true
     },
     special : {
         type : String
+    },
+    totalPrice : {
+        type : Number,
+        required : true
     }
 })
 module.exports = lunch = mongoose.model("lunch",lunchSchema);
