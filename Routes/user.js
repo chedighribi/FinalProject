@@ -11,6 +11,12 @@ const users = require("../Models/userModel");
 router.post("/register", registerRules(), validator, async (req, res) => {
   const { fullname, email, password, phone, adress } = req.body;
   try {
+    // Check for existing user
+    let user = await User.findOne({ email });
+    if (user) {
+      return res.status(400).json({ msg: 'User already exists' });
+    }
+
     const newUser = new users({
       fullname,
       email,
@@ -18,7 +24,11 @@ router.post("/register", registerRules(), validator, async (req, res) => {
       phone,
       adress,
     });
+
+        // Create Salt & hash - mta3 el password na3mlouh lundi m3a b3adhna
+
     const user = await newUser.save();
+    
     res.json({ msg: "user saved", user });
   } catch (error) {
     console.log(error);
