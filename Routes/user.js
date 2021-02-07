@@ -12,12 +12,12 @@ router.post("/register", registerRules(), validator, async (req, res) => {
   const { fullname, email, password, phone, adress } = req.body;
   try {
     // Check for existing user
-    let user = await User.findOne({ email });
-    if (user) {
+    let newUser = await users.findOne({ email });
+    if (newUser) {
       return res.status(400).json({ msg: 'User already exists' });
     }
 
-    const newUser = new users({
+     newUser = new users({
       fullname,
       email,
       password,
