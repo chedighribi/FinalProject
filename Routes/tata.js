@@ -1,4 +1,16 @@
 const router = require('express').Router();
+const multer = require ("multer");
+
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+      cb(null, './Public/Uploads');
+    },
+    filename: function (req, file, cb) {
+      cb(null, new Date().toISOString() + file.originalname);
+    }
+  });
+  
+const upload = multer({storage: storage});
 
 
 const tata = require ('../Models/tataModel');
@@ -7,7 +19,7 @@ const tata = require ('../Models/tataModel');
 // add tata
 // private
 
-router.post('/tataplus', async (req,res)=>{
+router.post('/tataplus',upload.single("TataProfile"), async (req,res)=>{
     const {name,adress,phone,bio,speciality,goal}= req.body;
     try {
         const newTata = new tata ({
