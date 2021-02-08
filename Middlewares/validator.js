@@ -13,7 +13,7 @@ const registerRules = () => [
 
 const loginRules = () => [
   body("email", "email is required").isEmail(),
-  body("password", "Password must contain 6 characters").isLength({
+  body("password", "Password must contain at least 6 characters").isLength({
     min: 6,
     max: 20,
   }),
