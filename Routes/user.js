@@ -1,6 +1,11 @@
 const router = require("express").Router();
-const { registerRules, validator } = require("../Middlewares/validator");
+const { registerRules, validator, loginRules } = require("../Middlewares/validator");
+const bcrypt = require('bcrypt');
 const users = require("../Models/userModel");
+const jwt = require('jsonwebtoken');
+const config = require("config");
+
+
 
 // @route : http://localhost:5000/api/register
 // user register
@@ -23,15 +28,58 @@ router.post("/register" , registerRules(), validator, async (req, res) => {
       adress,
     });
 
-        // Create Salt & hash - mta3 el password na3mlouh lundi m3a b3adhna
+        // Create Salt & hash 
+
+        const salt = 10;
+        const hashedPassword = await bcrypt.hash(password, salt);
+        newUser.password = hashedPassword;
 
     const user = await newUser.save();
     
-    res.json({ msg: "user saved", user });
+        // token
+        const payload = {
+          id: user._id,
+        };
+    
+        const token = await jwt.sign(payload, config.get("SECRETKEY"));
+    
+    
+    res.json({ msg: "user saved", user, token });
   } catch (error) {
     console.log(error);
   }
 });
+
+// @route : http://localhost:5000/api/register
+// user login
+// public
+
+router.post("/login", loginRules(), validator, async(req, res)=>{
+  const {email,password} = req.body;
+  try {
+        //Check user and password
+    let user = await users.findOne({ email });
+    if (!user) {
+      return res.status(400).send({ msg: 'Wrong email' });
+    }
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).send({ msg: 'Wrong password' });
+    }
+
+    // token
+    const payload = {
+      id: user._id,
+    };
+
+    const token = await jwt.sign(payload, config.get("SECRETKEY"));
+
+    res.send({ msg: 'Logged in with success', user , token });
+
+  } catch (error) {
+    console.log(error);
+  }
+})
 
 // @route : http://localhost:5000/api/users
 // get all users

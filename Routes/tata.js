@@ -3,7 +3,7 @@ const multer = require ("multer");
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-      cb(null, './Public/Uploads');
+      cb(null, './Public/tataProfile');
     },
     filename: function (req, file, cb) {
       cb(null, new Date().toISOString() + file.originalname);
@@ -68,7 +68,7 @@ router.put('/edittata/:_id', async (req,res)=>{
 // delete tata profile
 // private
 
-router.delete('deletetata/:_id', async (req,res)=>{
+router.delete('/deletetata/:_id', async (req,res)=>{
     const {_id}= req.params;
     try {
         const tatadeleted = await tata.findOneAndDelete({_id});

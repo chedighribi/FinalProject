@@ -1,4 +1,17 @@
 const router = require('express').Router();
+const multer = require ("multer");
+
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+      cb(null, './Public/boxPictures');
+    },
+    filename: function (req, file, cb) {
+      cb(null, new Date().toISOString() + file.originalname);
+    }
+  });
+  
+const upload = multer({storage: storage});
+
 
 
 const boxes = require ('../Models/boxModel');
@@ -7,7 +20,7 @@ const boxes = require ('../Models/boxModel');
 // add box
 // private
 
-router.post('/addbox', async (req,res)=>{
+router.post('/addbox', upload.single("BoxImage") , async (req,res)=>{
     const {price, name, ingredient, madeby}= req.body;
     try {
         const newBox = new boxes ({price, name, ingredient, madeby});
