@@ -1,14 +1,12 @@
 const router = require("express").Router();
-
 const { registerRules, validator } = require("../Middlewares/validator");
-const { find } = require("../Models/userModel");
 const users = require("../Models/userModel");
 
 // @route : http://localhost:5000/api/register
 // user register
 // public
 
-router.post("/register", registerRules(), validator, async (req, res) => {
+router.post("/register" , registerRules(), validator, async (req, res) => {
   const { fullname, email, password, phone, adress } = req.body;
   try {
     // Check for existing user
