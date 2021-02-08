@@ -3,6 +3,10 @@ const router = require('express').Router();
 
 const traiteur = require ('../Models/traiteurModel');
 
+// @route : http://localhost:5000/api/traiteur
+// add request
+// public
+
 router.post('/traiteur', async (req,res)=>{
     const {date, nPerson, adress, type}= req.body;
     try {
@@ -19,6 +23,10 @@ router.post('/traiteur', async (req,res)=>{
     }
 });
 
+// @route : http://localhost:5000/api/traiteurrequest
+// get traiteur request
+// private
+
 router.get('/traiteurrequest', async (req,res)=>{
     try {
         const Request = await traiteur.find();
@@ -27,6 +35,10 @@ router.get('/traiteurrequest', async (req,res)=>{
         console.log(error)
     }
 });
+
+// @route : http://localhost:5000/api/deleterequest/:_id
+// delete traiteur request
+// private
 
 router.delete('/deleterequest/:_id', async(req,res)=>{
     const {_id}= req.params;

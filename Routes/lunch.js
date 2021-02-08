@@ -3,7 +3,11 @@ const router = require('express').Router();
 
 const lunch = require ('../Models/lunchModel');
 
-router.post('/order', async (req,res)=>{
+// @route : http://localhost:5000/api/lunch
+// add order
+// public
+
+router.post('/lunch', async (req,res)=>{
     const {time, adress, phone, special}= req.body;
     try {
         const newLunch = new lunch ({
@@ -19,7 +23,11 @@ router.post('/order', async (req,res)=>{
     }
 });
 
-router.get('/lunch', async(req,res)=>{
+// @route : http://localhost:5000/api/orders
+// get orders
+// private
+
+router.get('/orders', async(req,res)=>{
     try {
         const lunchs = await lunch.find();
         res.json({msg:'lunch fetched', lunchs})
@@ -28,7 +36,12 @@ router.get('/lunch', async(req,res)=>{
     }
 })
 
-router.delete('/deletelunch/:_id', async (req,res)=>{
+// @route : http://localhost:5000/api/deleteorder
+// delete order
+// private
+
+
+router.delete('/deleteorder/:_id', async (req,res)=>{
     const {_id}= req.params;
     try {
         const lunchdeleted = await lunch.findOneAndDelete({_id});

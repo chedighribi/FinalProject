@@ -3,6 +3,10 @@ const router = require('express').Router();
 
 const tata = require ('../Models/tataModel');
 
+// @route : http://localhost:5000/api/tataplus
+// add tata
+// private
+
 router.post('/tataplus', async (req,res)=>{
     const {name,adress,phone,bio,speciality,goal}= req.body;
     try {
@@ -21,6 +25,10 @@ router.post('/tataplus', async (req,res)=>{
     }
 });
 
+// @route : http://localhost:5000/api/tata
+// get tata list
+// public
+
 router.get('/tata', async(req,res)=>{
     try {
         const tatas = await tata.find();
@@ -30,6 +38,9 @@ router.get('/tata', async(req,res)=>{
     }
 })
 
+// @route : http://localhost:5000/api/edittata/:_id
+// edit tata profile
+// private
 
 router.put('/edittata/:_id', async (req,res)=>{
     const {_id}= req.params;
@@ -40,6 +51,10 @@ router.put('/edittata/:_id', async (req,res)=>{
         console.log(error)
     }
 })
+
+// @route : http://localhost:5000/api/deletetata/:_id
+// delete tata profile
+// private
 
 router.delete('deletetata/:_id', async (req,res)=>{
     const {_id}= req.params;
