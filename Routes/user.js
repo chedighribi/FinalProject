@@ -1,14 +1,18 @@
 const router = require("express").Router();
-
-const { registerRules, validator } = require("../Middlewares/validator");
-const { find } = require("../Models/userModel");
+const { registerRules, validator, loginRules } = require("../Middlewares/validator");
+const bcrypt = require('bcrypt');
 const users = require("../Models/userModel");
+const jwt = require('jsonwebtoken');
+const config = require("config");
+const isAuth = require("../Middlewares/isAuth");
+
+
 
 // @route : http://localhost:5000/api/register
 // user register
 // public
 
-router.post("/register", registerRules(), validator, async (req, res) => {
+router.post("/register" , registerRules(), validator, async (req, res) => {
   const { fullname, email, password, phone, adress } = req.body;
   try {
     // Check for existing user
@@ -25,20 +29,63 @@ router.post("/register", registerRules(), validator, async (req, res) => {
       adress,
     });
 
-        // Create Salt & hash - mta3 el password na3mlouh lundi m3a b3adhna
+        // Create Salt & hash 
+
+        const salt = 10;
+        const hashedPassword = await bcrypt.hash(password, salt);
+        newUser.password = hashedPassword;
 
     const user = await newUser.save();
     
-    res.json({ msg: "user saved", user });
+        // token
+        const payload = {
+          id: user._id,
+        };
+    
+        const token = await jwt.sign(payload, config.get("SECRETKEY"));
+    
+    
+    res.json({ msg: "user saved", user, token });
   } catch (error) {
     console.log(error);
   }
 });
 
+// @route : http://localhost:5000/api/login
+// user login
+// public
+
+router.post("/login", loginRules(), validator, async(req, res)=>{
+  const {email,password} = req.body;
+  try {
+        //Check user and password
+    let user = await users.findOne({ email });
+    if (!user) {
+      return res.status(400).send({ msg: 'Wrong email' });
+    }
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).send({ msg: 'Wrong password' });
+    }
+
+    // token
+    const payload = {
+      id: user._id,
+    };
+
+    const token = await jwt.sign(payload, config.get("SECRETKEY"));
+
+    res.send({ msg: 'Logged in with success', user , token });
+
+  } catch (error) {
+    console.log(error);
+  }
+})
+
 // @route : http://localhost:5000/api/users
 // get all users
-// public
-router.get("/users", async (req, res) => {
+// private
+router.get("/users",isAuth, async (req, res) => {
   try {
     const allUsers = await users.find();
     res.json({ msg: "users fetched", allUsers });
@@ -49,8 +96,8 @@ router.get("/users", async (req, res) => {
 
 // @route : http://localhost:5000/api/edituser/:_id
 // edit user profile
-// public
-router.put("/edituser/:_id", registerRules(), validator, async (req, res) => {
+// private
+router.put("/edituser/:_id", registerRules(), validator, isAuth , async (req, res) => {
   const { _id } = req.params;
   try {
     const editedUser = await users.findByIdAndUpdate(
@@ -66,8 +113,8 @@ router.put("/edituser/:_id", registerRules(), validator, async (req, res) => {
 
 // @route : http://localhost:5000/api/deleteuser/:_id
 // delete user
-// public
-router.delete("/deleteuser/:_id", async (req, res) => {
+// private
+router.delete("/deleteuser/:_id", isAuth , async (req, res) => {
   const { _id } = req.params;
   try {
     const deletedUser = await users.findByIdAndDelete({ _id });
