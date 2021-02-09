@@ -1,5 +1,8 @@
 const router = require('express').Router();
 const multer = require ("multer");
+const isAuth = require("../Middlewares/isAuth");
+const isAdmin = require ("../Middlewares/isAdmin");
+
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
@@ -20,7 +23,7 @@ const boxes = require ('../Models/boxModel');
 // add box
 // private
 
-router.post('/addbox', upload.single("BoxImage") , async (req,res)=>{
+router.post('/addbox', upload.single("BoxImage") , isAuth, isAdmin, async (req,res)=>{
     const {price, name, ingredient, madeby}= req.body;
     try {
         const newBox = new boxes ({price, name, ingredient, madeby});
@@ -48,7 +51,7 @@ router.get('/lunch' , async (req,res)=>{
 // edit box
 // private
 
-router.put('/editbox/:_id' , async (req,res)=>{
+router.put('/editbox/:_id' , isAuth, isAdmin, async (req,res)=>{
     const {_id} = req.params;
     try {
         const boxedited = await box.findOneAndUpdate({_id}, {$set : req.body});
@@ -62,7 +65,7 @@ router.put('/editbox/:_id' , async (req,res)=>{
 // delete box
 // private
 
-router.delete('/deletebox/:_id', async(req,res)=>{
+router.delete('/deletebox/:_id', isAuth, isAdmin, async(req,res)=>{
     const {_id}= req.params;
     try {
         const boxdeleted = await box.findOneAndDelete({_id});
