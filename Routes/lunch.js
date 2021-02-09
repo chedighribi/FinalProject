@@ -1,4 +1,6 @@
 const router = require('express').Router();
+const isAuth = require("../Middlewares/isAuth");
+const isAdmin = require ("../Middlewares/isAdmin");
 
 
 const lunch = require ('../Models/lunchModel');
@@ -7,7 +9,7 @@ const lunch = require ('../Models/lunchModel');
 // add order
 // public
 
-router.post('/lunch', async (req,res)=>{
+router.post('/lunch', isAuth, async (req,res)=>{
     const {time, adress, phone, special}= req.body;
     try {
         const newLunch = new lunch ({
@@ -27,7 +29,7 @@ router.post('/lunch', async (req,res)=>{
 // get orders
 // private
 
-router.get('/orders', async(req,res)=>{
+router.get('/orders', isAuth, isAdmin, async(req,res)=>{
     try {
         const lunchs = await lunch.find();
         res.json({msg:'lunch fetched', lunchs})
@@ -41,7 +43,7 @@ router.get('/orders', async(req,res)=>{
 // private
 
 
-router.delete('/deleteorder/:_id', async (req,res)=>{
+router.delete('/deleteorder/:_id', isAuth, async (req,res)=>{
     const {_id}= req.params;
     try {
         const lunchdeleted = await lunch.findOneAndDelete({_id});

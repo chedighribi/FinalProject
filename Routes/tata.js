@@ -1,5 +1,8 @@
 const router = require('express').Router();
 const multer = require ("multer");
+const isAuth = require("../Middlewares/isAuth");
+const isAdmin = require ("../Middlewares/isAdmin");
+
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
@@ -19,7 +22,7 @@ const tata = require ('../Models/tataModel');
 // add tata
 // private
 
-router.post('/tataplus',upload.single("TataProfile"), async (req,res)=>{
+router.post('/tataplus',upload.single("TataProfile"), isAuth, isAdmin, async (req,res)=>{
     const {name,adress,phone,bio,speciality,goal}= req.body;
     try {
         const newTata = new tata ({
@@ -54,7 +57,7 @@ router.get('/tata', async(req,res)=>{
 // edit tata profile
 // private
 
-router.put('/edittata/:_id', async (req,res)=>{
+router.put('/edittata/:_id', isAuth, isAdmin, async (req,res)=>{
     const {_id}= req.params;
     try {
         const tataedited = await tata.findOneAndUpdate({_id},{$set:req.body})
@@ -68,7 +71,7 @@ router.put('/edittata/:_id', async (req,res)=>{
 // delete tata profile
 // private
 
-router.delete('/deletetata/:_id', async (req,res)=>{
+router.delete('/deletetata/:_id', isAuth, isAdmin, async (req,res)=>{
     const {_id}= req.params;
     try {
         const tatadeleted = await tata.findOneAndDelete({_id});
