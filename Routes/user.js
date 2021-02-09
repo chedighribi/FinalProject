@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const users = require("../Models/userModel");
 const jwt = require('jsonwebtoken');
 const config = require("config");
+const isAuth = require("../Middlewares/isAuth");
 
 
 
@@ -50,7 +51,7 @@ router.post("/register" , registerRules(), validator, async (req, res) => {
   }
 });
 
-// @route : http://localhost:5000/api/register
+// @route : http://localhost:5000/api/login
 // user login
 // public
 
@@ -83,8 +84,8 @@ router.post("/login", loginRules(), validator, async(req, res)=>{
 
 // @route : http://localhost:5000/api/users
 // get all users
-// public
-router.get("/users", async (req, res) => {
+// private
+router.get("/users",isAuth, async (req, res) => {
   try {
     const allUsers = await users.find();
     res.json({ msg: "users fetched", allUsers });
@@ -95,8 +96,8 @@ router.get("/users", async (req, res) => {
 
 // @route : http://localhost:5000/api/edituser/:_id
 // edit user profile
-// public
-router.put("/edituser/:_id", registerRules(), validator, async (req, res) => {
+// private
+router.put("/edituser/:_id", registerRules(), validator, isAuth , async (req, res) => {
   const { _id } = req.params;
   try {
     const editedUser = await users.findByIdAndUpdate(
@@ -112,8 +113,8 @@ router.put("/edituser/:_id", registerRules(), validator, async (req, res) => {
 
 // @route : http://localhost:5000/api/deleteuser/:_id
 // delete user
-// public
-router.delete("/deleteuser/:_id", async (req, res) => {
+// private
+router.delete("/deleteuser/:_id", isAuth , async (req, res) => {
   const { _id } = req.params;
   try {
     const deletedUser = await users.findByIdAndDelete({ _id });
