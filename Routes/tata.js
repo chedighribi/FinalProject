@@ -1,9 +1,25 @@
 const router = require('express').Router();
+const multer = require ("multer");
+
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+      cb(null, './Public/tataProfile');
+    },
+    filename: function (req, file, cb) {
+      cb(null, new Date().toISOString() + file.originalname);
+    }
+  });
+  
+const upload = multer({storage: storage});
 
 
 const tata = require ('../Models/tataModel');
 
-router.post('/tataplus', async (req,res)=>{
+// @route : http://localhost:5000/api/tataplus
+// add tata
+// private
+
+router.post('/tataplus',upload.single("TataProfile"), async (req,res)=>{
     const {name,adress,phone,bio,speciality,goal}= req.body;
     try {
         const newTata = new tata ({
@@ -21,6 +37,10 @@ router.post('/tataplus', async (req,res)=>{
     }
 });
 
+// @route : http://localhost:5000/api/tata
+// get tata list
+// public
+
 router.get('/tata', async(req,res)=>{
     try {
         const tatas = await tata.find();
@@ -30,6 +50,9 @@ router.get('/tata', async(req,res)=>{
     }
 })
 
+// @route : http://localhost:5000/api/edittata/:_id
+// edit tata profile
+// private
 
 router.put('/edittata/:_id', async (req,res)=>{
     const {_id}= req.params;
@@ -41,7 +64,11 @@ router.put('/edittata/:_id', async (req,res)=>{
     }
 })
 
-router.delete('deletetata/:_id', async (req,res)=>{
+// @route : http://localhost:5000/api/deletetata/:_id
+// delete tata profile
+// private
+
+router.delete('/deletetata/:_id', async (req,res)=>{
     const {_id}= req.params;
     try {
         const tatadeleted = await tata.findOneAndDelete({_id});

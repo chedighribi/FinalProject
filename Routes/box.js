@@ -1,17 +1,29 @@
 const router = require('express').Router();
+const multer = require ("multer");
+
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+      cb(null, './Public/boxPictures');
+    },
+    filename: function (req, file, cb) {
+      cb(null, new Date().toISOString() + file.originalname);
+    }
+  });
+  
+const upload = multer({storage: storage});
+
 
 
 const boxes = require ('../Models/boxModel');
 
-router.post('/addbox', async (req,res)=>{
+// @route : http://localhost:5000/api/addbox
+// add box
+// private
+
+router.post('/addbox', upload.single("BoxImage") , async (req,res)=>{
     const {price, name, ingredient, madeby}= req.body;
     try {
-        const newBox = new boxes ({
-            price,
-            name,
-            ingredient,
-            madeby
-            });
+        const newBox = new boxes ({price, name, ingredient, madeby});
         const Box = await newBox.save();
         res.json({msg:'box saved',Box});
     } catch (error) {
@@ -19,7 +31,11 @@ router.post('/addbox', async (req,res)=>{
     }
 });
 
-router.get('/box' , async (req,res)=>{
+// @route : http://localhost:5000/api/lunch
+// get boxes
+// public
+
+router.get('/lunch' , async (req,res)=>{
     try {
         const box = await boxes.find();
         res.json({msg:'boxes fetched',box})
@@ -27,6 +43,10 @@ router.get('/box' , async (req,res)=>{
         console.log(error)
     }
 })
+
+// @route : http://localhost:5000/api/editbox/:_id
+// edit box
+// private
 
 router.put('/editbox/:_id' , async (req,res)=>{
     const {_id} = req.params;
@@ -37,6 +57,10 @@ router.put('/editbox/:_id' , async (req,res)=>{
         console.log(error)
     }
 })
+
+// @route : http://localhost:5000/api//deletebox/:_id
+// delete box
+// private
 
 router.delete('/deletebox/:_id', async(req,res)=>{
     const {_id}= req.params;
