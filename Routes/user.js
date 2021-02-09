@@ -5,6 +5,7 @@ const users = require("../Models/userModel");
 const jwt = require('jsonwebtoken');
 const config = require("config");
 const isAuth = require("../Middlewares/isAuth");
+const isAdmin = require ("../Middlewares/isAdmin");
 
 
 
@@ -13,7 +14,7 @@ const isAuth = require("../Middlewares/isAuth");
 // public
 
 router.post("/register" , registerRules(), validator, async (req, res) => {
-  const { fullname, email, password, phone, adress } = req.body;
+  const { fullname, email, password, phone, adress, admin } = req.body;
   try {
     // Check for existing user
     let newUser = await users.findOne({ email });
@@ -27,6 +28,7 @@ router.post("/register" , registerRules(), validator, async (req, res) => {
       password,
       phone,
       adress,
+      admin
     });
 
         // Create Salt & hash 
@@ -85,7 +87,7 @@ router.post("/login", loginRules(), validator, async(req, res)=>{
 // @route : http://localhost:5000/api/users
 // get all users
 // private
-router.get("/users",isAuth, async (req, res) => {
+router.get("/users", isAuth, isAdmin , async (req, res) => {
   try {
     const allUsers = await users.find();
     res.json({ msg: "users fetched", allUsers });
@@ -97,7 +99,7 @@ router.get("/users",isAuth, async (req, res) => {
 // @route : http://localhost:5000/api/edituser/:_id
 // edit user profile
 // private
-router.put("/edituser/:_id", registerRules(), validator, isAuth , async (req, res) => {
+router.put("/edituser/:_id", isAuth ,registerRules(), validator , async (req, res) => {
   const { _id } = req.params;
   try {
     const editedUser = await users.findByIdAndUpdate(
@@ -114,7 +116,7 @@ router.put("/edituser/:_id", registerRules(), validator, isAuth , async (req, re
 // @route : http://localhost:5000/api/deleteuser/:_id
 // delete user
 // private
-router.delete("/deleteuser/:_id", isAuth , async (req, res) => {
+router.delete("/deleteuser/:_id", isAuth, isAdmin  , async (req, res) => {
   const { _id } = req.params;
   try {
     const deletedUser = await users.findByIdAndDelete({ _id });

@@ -1,4 +1,7 @@
 const router = require('express').Router();
+const isAuth = require("../Middlewares/isAuth");
+const isAdmin = require ("../Middlewares/isAdmin");
+
 
 
 const traiteur = require ('../Models/traiteurModel');
@@ -27,7 +30,7 @@ router.post('/traiteur', async (req,res)=>{
 // get traiteur request
 // private
 
-router.get('/traiteurrequest', async (req,res)=>{
+router.get('/traiteurrequest',isAuth, isAdmin, async (req,res)=>{
     try {
         const Request = await traiteur.find();
         res.json({msg:'Request fetched',Request});
@@ -40,7 +43,7 @@ router.get('/traiteurrequest', async (req,res)=>{
 // delete traiteur request
 // private
 
-router.delete('/deleterequest/:_id', async(req,res)=>{
+router.delete('/deleterequest/:_id',isAuth, isAdmin, async(req,res)=>{
     const {_id}= req.params;
     try {
         const Requestdeleted = await traiteur.findOneAndDelete({_id});
