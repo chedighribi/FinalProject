@@ -7,7 +7,7 @@ const BoxList =()=>{
     useEffect(()=>{
         dispatch(getBox());
     }, []);
-    const boxs = useSelector((state)=>state.boxs.box);
+    const boxs = useSelector((state)=>state.boxReducer.box);
 
     return(
         <div>
