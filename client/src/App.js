@@ -15,7 +15,3 @@ function App() {
       <Route path ='/tata'render = {()=> <TataList />} />
       </BrowserRouter>
     </div>
-  );
-}
-
-export default App;
