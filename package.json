@@ -5,17 +5,20 @@
   "main": "Server.js",
   "scripts": {
     "client": "npm start --prefix client",
-    "server": "nodemon Server.js",
-    "dev": "concurrently \"npm run server \" \" npm run client"
+    "server": "npx nodemon Server.js",
+    "dev": " concurrently \"npm run server \" \" npm run client\""
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
     "bcryptjs": "^2.4.3",
     "concurrently": "^5.3.0",
     "config": "^3.3.3",
     "express": "^4.17.1",
     "express-validator": "^6.9.2",
+    "fontsource-roboto": "^4.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.14",
     "morgan": "^1.10.0",
