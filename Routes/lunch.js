@@ -1,6 +1,9 @@
 const router = require('express').Router();
 const isAuth = require("../Middlewares/isAuth");
 const isAdmin = require ("../Middlewares/isAdmin");
+const User = require ('../Models/userModel');
+const jwt = require("jsonwebtoken");
+const config = require("config");
 
 
 const lunch = require ('../Models/lunchModel');
@@ -10,13 +13,18 @@ const lunch = require ('../Models/lunchModel');
 // public
 
 router.post('/lunch', isAuth, async (req,res)=>{
-    const {time, adress, phone, special}= req.body;
+    const {time, adress, special,totalPrice}= req.body;
+    const token = req.headers['auth-token'];
+    const decoded = await jwt.verify(token, config.get("SECRETKEY"));
+    const user= await User.findById(decoded.id)
     try {
         const newLunch = new lunch ({
+            name: user.fullname,
             time,
             adress,
-            phone,
-            special
+            phone: user.phone,
+            special,
+            totalPrice
             });
         const Lunch = await newLunch.save();
         res.json({msg:'order saved',Lunch});

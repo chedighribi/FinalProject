@@ -4,16 +4,20 @@ const schema = mongoose.Schema;
 const lunchSchema = new schema({
     time : {
         type : Date,
-        required : true,
+        default : Date.now()
     },
+    name :{
+        type : String
+    },
+    
     adress : {
         type : String,
         required : true
     },
     phone : {
-        type : Number,
-        required : true
-    },
+        type : Number
+    }
+    ,
     special : {
         type : String
     },

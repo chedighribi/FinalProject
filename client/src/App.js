@@ -1,18 +1,17 @@
-import "./App.css";
-import { BrowserRouter, Link, Route } from "react-router-dom";
-import BoxList from "./components/Boxes/BoxList";
-import NavBar from "./components/navBar/NavBar";
-import RegisterSide from "./components/RegisterAndLogin/RegisterSide";
+import './App.css';
+import BoxList from './components/Boxes/BoxList'
+import NavBar from './components/navBar/NavBar'
+import RegisterSide from './components/RegisterAndLogin/RegisterSide'
+import {BrowserRouter, Link , Route} from "react-router-dom"
+import TataList from './components/tatas/TataList'
 
 function App() {
   return (
-    <BrowserRouter>
+    <div className="App">
+      <BrowserRouter>
       <NavBar />
-      <div className="App">
-        <Route path="/lunchbox" render={() => <BoxList />} />
-      </div>
-    </BrowserRouter>
-  );
-}
-
-export default App;
+      <Route  path ="/register" render= {()=>  <RegisterSide /> }/>
+      <Route  path ="/lunch" render= {()=> <BoxList /> }/>
+      <Route path ='/tata'render = {()=> <TataList />} />
+      </BrowserRouter>
+    </div>

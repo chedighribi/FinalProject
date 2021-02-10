@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import CustomizedMenu from './CustomizedMenu'
+import {BrowserRouter, Link , Route} from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,11 +33,23 @@ export default function NavBar() {
           <Typography variant="h6" className={classes.title}>
             News
           </Typography>
+          {/* <BrowserRouter> */}
+          <Link to = "/login" >
           <Button color="inherit">Login</Button>
+          </Link>
+          <Link to = "/register" >
           <Button color="inherit">Register</Button>
+          </Link>
+          <Link to = "/tata" >
           <Button color="inherit">Tatta</Button>
+          </Link>
+          <Link to = "/lunch" >
           <Button color="inherit">Lunch</Button>
+          </Link>
+          <Link to = "/traiteur" >
           <Button color="inherit">Traiteur</Button>
+          </Link>
+          {/* </BrowserRouter> */}
 
         </Toolbar>
       </AppBar>
