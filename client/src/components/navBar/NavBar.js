@@ -33,6 +33,11 @@ export default function NavBar() {
             News
           </Typography>
           <Button color="inherit">Login</Button>
+          <Button color="inherit">Register</Button>
+          <Button color="inherit">Tatta</Button>
+          <Button color="inherit">Lunch</Button>
+          <Button color="inherit">Traiteur</Button>
+
         </Toolbar>
       </AppBar>
     </div>
