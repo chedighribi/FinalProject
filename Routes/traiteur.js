@@ -11,13 +11,15 @@ const traiteur = require ('../Models/traiteurModel');
 // public
 
 router.post('/traiteur', async (req,res)=>{
-    const {date, nPerson, adress, type}= req.body;
+    const {date, nPerson, adress, type, email, phone}= req.body;
     try {
         const newTraiteur = new traiteur ({
             date,
             nPerson,
             adress,
-            type
+            type,
+            email,
+            phone
         });
         const traiteurs = await newTraiteur.save();
         res.json({msg:'request traiteur saved',traiteurs});
