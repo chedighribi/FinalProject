@@ -8,7 +8,6 @@ import IconButton from '@material-ui/core/IconButton';
 import {BrowserRouter, Link , Route} from "react-router-dom"
 
 
-
 export default function NavBar() {
 
   return (
@@ -50,7 +49,6 @@ export default function NavBar() {
           </div>
 
           {/* </BrowserRouter> */}
-
         </Toolbar>
       </AppBar>
     </div>
