@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100vh',
   },
   image: {
-    backgroundImage: 'url(https://images.pexels.com/photos/4262009/pexels-photo-4262009.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)',
+    backgroundImage: 'url(https://images.unsplash.com/photo-1581579439002-e29ac578f8d4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80)',
     backgroundRepeat: 'no-repeat',
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
@@ -52,8 +52,8 @@ export default function RegisterSide() {
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
+          <Avatar className={classes.avatar} style={{backgroundColor:"#f36846"}}>
+            <LockOutlinedIcon style={{color:"beige"}}/>
           </Avatar>
           <Typography component="h1" variant="h5">
             Register
@@ -118,6 +118,7 @@ export default function RegisterSide() {
               variant="contained"
               color="primary"
               className={classes.submit}
+              style={{backgroundColor:"#f36846"}}
             >
               Register
             </Button>

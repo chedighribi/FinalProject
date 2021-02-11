@@ -36,3 +36,113 @@
     transform: rotate(360deg);
   }
 }
+
+.linkNavbar {
+  text-decoration: none;
+  color: beige;
+}
+
+.linkNavbar:hover {
+  text-decoration: none;
+  color: beige;
+}
+
+.NavMain {
+  display: flex;
+  justify-content: space-between;
+}
+
+.WhoL {
+  margin-top: 60px;
+}
+
+.WhoR {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.WhoTxt {
+  left: 40px;
+  justify-self: start;
+  font-size: 15px;
+  text-align: justify;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.WhoImg {
+  margin-right: 10%;
+}
+
+.WhyL {
+  margin-top: 60px;
+}
+.WhyR {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.WhyTxt {
+  left: 40px;
+  justify-self: start;
+  font-size: 15px;
+  text-align: justify;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.WhyImg {
+  margin-left: 10%;
+}
+
+.TitleOne {
+  margin-top: 90px;
+}
+
+.carousel {
+  margin-bottom: 40px;
+}
+
+.HowL {
+  margin-top: 60px;
+}
+.HowR {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.HowTxt {
+  left: 40px;
+  justify-self: start;
+  font-size: 15px;
+  text-align: justify;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.HowImg {
+  margin-right: 10%;
+}
+.LoReBtn {
+  padding-left: 20px;
+  display: flex;
+}
+
+.LoBtn {
+  margin-right: 5px;
+}
+.ReBtn {
+  margin-left: 5px;
+}
+.SpanTitle {
+  color: #f36846;
+  font-family: "Dancing Script", cursive;
+}
+
+.linkNavbar {
+  font-family: "Dancing Script", cursive;
+  font-weight: bold;
+}
