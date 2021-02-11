@@ -19,6 +19,13 @@ const loginRules = () => [
   }),
 ];
 
+const contactUsRules = () => [
+  body("email", "email is required").isEmail(),
+  body("firstName", "First Name is required").notEmpty(),
+  body("lastName", "Last Name is required").notEmpty(),
+  body("message", "message is required").notEmpty(),
+];
+
 const validator = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -31,4 +38,4 @@ const validator = (req, res, next) => {
   next();
 };
 
-module.exports = { validator, registerRules, loginRules };
+module.exports = { validator, registerRules, contactUsRules, loginRules };
