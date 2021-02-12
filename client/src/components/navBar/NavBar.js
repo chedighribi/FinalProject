@@ -40,6 +40,9 @@ export default function NavBar() {
           <Link to = "/register" >
           <Button color="inherit">Register</Button>
           </Link>
+          <Link to = "/shopping" >
+          <Button color="inherit">Shopping</Button>
+          </Link>
           <Link to = "/tata" >
           <Button color="inherit">Tatta</Button>
           </Link>
