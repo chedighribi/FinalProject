@@ -7,7 +7,6 @@ const Shopping=()=>{
     
     const total =(t)=>{
         let sum =0;
-        console.log(t[0].price)   
     for(let i=0;i< t.length;i++){
          sum=sum+t[i].price;
     }
