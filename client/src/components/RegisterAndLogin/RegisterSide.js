@@ -1,18 +1,20 @@
-import React from 'react';
+import React ,{ useState } from 'react';
+import {useDispatch} from 'react-redux';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import {registerUser} from '../../redux/actions/userAction'
 
 
 const useStyles = makeStyles((theme) => ({
+  
   root: {
     height: '100vh',
   },
@@ -46,6 +48,18 @@ const useStyles = makeStyles((theme) => ({
 export default function RegisterSide() {
   const classes = useStyles();
 
+const [fullname, setNewName] = useState('');
+const [email, setNewEmail] = useState('');
+const [phone, setNewPhone] = useState(0);
+const [adress, setNewAdress] = useState('');
+const [password, setNewPassword] = useState('');
+const dispatch = useDispatch();
+const handleRegister =()=> {
+  const user ={fullname, email, phone , adress, password}
+
+ dispatch(registerUser(user))
+};
+
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -68,6 +82,8 @@ export default function RegisterSide() {
               label="Fullname"
               name="Fullname"
               autoFocus
+              value = {fullname}
+              onChange={(e)=> setNewName(e.target.value)}
             />
             <TextField
               variant="outlined"
@@ -79,6 +95,8 @@ export default function RegisterSide() {
               name="email"
               autoComplete="email"
               autoFocus
+              value = {email}
+              onChange={(e)=> setNewEmail(e.target.value)}
             />
             <TextField
               variant="outlined"
@@ -89,6 +107,8 @@ export default function RegisterSide() {
               label="Phone"
               name="Phone"
               autoFocus
+              value = {phone}
+              onChange={(e)=> setNewPhone(e.target.value)}
             />
             <TextField
               variant="outlined"
@@ -99,6 +119,8 @@ export default function RegisterSide() {
               label="Address"
               name="Adress"
               autoFocus
+              value = {adress}
+              onChange={(e)=> setNewAdress(e.target.value)}
             />
             <TextField
               variant="outlined"
@@ -110,15 +132,17 @@ export default function RegisterSide() {
               type="password"
               id="password"
               autoComplete="current-password"
+              value = {password}
+              onChange={(e)=> setNewPassword(e.target.value)}
             />
            
             <Button
-              type="submit"
               fullWidth
               variant="contained"
               color="primary"
               className={classes.submit}
               style={{backgroundColor:"#f36846"}}
+              onClick={handleRegister}
             >
               Register
             </Button>
