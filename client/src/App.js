@@ -3,11 +3,10 @@ import BoxList from './components/Boxes/BoxList'
 import NavBar from './components/navBar/NavBar'
 import RegisterSide from './components/RegisterAndLogin/RegisterSide'
 import TraiteurSteps from './components/Traiteur/TraiteurSteps'
+import Shopping from './components/Shopping'
 import Home from './components/Home/Home'
-
 import {BrowserRouter, Link , Route} from "react-router-dom"
 import TataList from './components/tatas/TataList'
-
 import { BrowserRouter, Link, Route } from "react-router-dom";
 import TataList from "./components/tatas/TataList";
 import ContactUs from "./components/ContactUs/ContactUs";
@@ -23,6 +22,7 @@ function App() {
       <Route  path ="/lunch" render= {()=> <BoxList /> }/>
       <Route path ='/tata'render = {()=> <TataList />} />
       <Route path ='/traiteur'render = {()=> <TraiteurSteps />} />
+      <Route path ='/shopping'render = {()=> <Shopping />} />
       <Route path="/contactus" render={() => <ContactUs />} />
       </BrowserRouter>
     </div>
