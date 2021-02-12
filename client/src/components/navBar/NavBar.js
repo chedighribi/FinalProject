@@ -1,15 +1,28 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import {BrowserRouter, Link , Route} from "react-router-dom"
+import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import {logout} from '../../redux/actions/userAction'
+import {useDispatch} from 'react-redux';
+
+
+
 
 
 export default function NavBar() {
+  const user = useSelector((state) => state.authReducer.user);
+  const dispatch = useDispatch();
 
+
+  const handleLogout =()=> {
+  
+   dispatch(logout())
+  };
+
+    if (!user) {
   return (
     <div >
       <AppBar position="static">
@@ -38,7 +51,7 @@ export default function NavBar() {
           </Link>
 
 
-          </div>
+          </div> 
           <div className='LoReBtn'>
             <div className='LoBtn'>
           <Link className="linkNavbar" to = "/login" >
@@ -50,6 +63,46 @@ export default function NavBar() {
           <Button color="inherit" style={{backgroundColor:"#f36846"}}>Register</Button>
           </Link>
           </div>
+          </div> 
+
+          {/* </BrowserRouter> */}
+        </Toolbar>
+      </AppBar>
+    </div>
+  ); }
+  return (
+    <div >
+      <AppBar position="static">
+        <Toolbar className="NavMain" style={{backgroundColor:"#719a7c"}}>
+          <Typography variant="h6">
+          <Link className="linkNavbar"  to = "/" >
+          Comme Tata
+          </Link>
+          </Typography>
+          {/* <BrowserRouter> */}
+          <div>
+          <Link className="linkNavbar" to = "/tata" >
+          <Button color="inherit">Tatta</Button>
+          </Link>
+          <Link className="linkNavbar" to = "/lunch" >
+          <Button color="inherit">Lunch</Button>
+          </Link>
+          <Link className="linkNavbar" to = "/traiteur" >
+          <Button color="inherit">Traiteur</Button>
+          </Link>
+          <Link className="linkNavbar" to = "/contactus" >
+          <Button color="inherit">Contact</Button>
+          </Link>
+          <Link className="linkNavbar" to = "/shopping" >
+          <Button color="inherit">shop</Button>
+          </Link>
+
+
+          </div> 
+            <div className='outBtn'>
+          <Link className="linkNavbar" to = "/" >
+          <Button color="inherit" style={{backgroundColor:"#f36846"}} onClick={handleLogout}>Logout</Button>
+          </Link>
           </div>
 
           {/* </BrowserRouter> */}
@@ -57,4 +110,6 @@ export default function NavBar() {
       </AppBar>
     </div>
   );
+  
+
 }
