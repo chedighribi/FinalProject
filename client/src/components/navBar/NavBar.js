@@ -30,9 +30,13 @@ export default function NavBar() {
           <Link className="linkNavbar" to = "/traiteur" >
           <Button color="inherit">Traiteur</Button>
           </Link>
-          <Link className="linkNavbar" to = "/contact" >
+          <Link className="linkNavbar" to = "/contactus" >
           <Button color="inherit">Contact</Button>
           </Link>
+          <Link className="linkNavbar" to = "/shopping" >
+          <Button color="inherit">shop</Button>
+          </Link>
+
 
           </div>
           <div className='LoReBtn'>
