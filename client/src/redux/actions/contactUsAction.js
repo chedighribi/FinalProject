@@ -7,3 +7,8 @@ export const getContactUs = () => (dispatch) => {
     .then((res) => dispatch({ type: GET_CONTACT_US, payload: res.data }))
     .catch((err) => console.log(err));
 };
+
+export const  cntctUs =(xdata)=> async (dispatch)=>{
+    axios.post("/api/contactus",xdata)
+    .then((res)=>dispatch(getContactUs()))
+    .catch((err)=>console.log(err))};
