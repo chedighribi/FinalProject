@@ -11,6 +11,7 @@ export const ContactUsReducer = (state = initState, { type, payload }) => {
         ...state,
         contactUs: payload,
       };
+      
     default:
       return state;
   }

@@ -1,20 +1,45 @@
-import React from "react";
+import React , {useState} from "react";
+import {cntctUs} from '../../redux/actions/contactUsAction';
+import { useDispatch} from 'react-redux';
 
 const ContactUs = () => {
+
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLasttName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState(0);
+  const [message, setMessage] = useState('');
+
+const dispatch = useDispatch();
+
+const add=()=>{
+  dispatch(cntctUs({firstName, lastName, email, phone, message}));
+  setFirstName('');
+  setLasttName('');
+  setEmail('');
+  setPhone(0);
+  setMessage('');
+};
+
+
+
+
+
+
   return (
     <div>
       <form>
         <label>First Name</label>
-        <input type="text" />
+        <input  value={firstName} onChange={(e)=>setFirstName(e.target.value)}  type="text" />
         <label>Last Name</label>
-        <input type="text" />
+        <input value={lastName} onChange={(e)=>setLasttName (e.target.value)} type="text" />
         <label>Email adress</label>
-        <input type="email" />
+        <input value={email} onChange={(e)=>setEmail (e.target.value)} type="email" />
         <label>Phone Number</label>
-        <input type="number" />
+        <input value={phone} onChange={(e)=>setPhone (e.target.value)} type="number" />
         <label>Message</label>
-        <textarea type="text" />
-        <button>Submit</button>
+        <textarea value={message} onChange={(e)=>setMessage (e.target.value)} type="text" />
+        <button onClick={add()}>Submit</button>
       </form>
     </div>
   );
