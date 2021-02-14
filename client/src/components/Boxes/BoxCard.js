@@ -55,15 +55,11 @@ const handleAdd = ()=>{
     <Card className={classes.root}>
       <CardHeader
         avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            {el.price}.dt
+          <Avatar aria-label="recipe" className={classes.avatar} style={{backgroundColor:"#719a7c"}}>
+            {el.price}
           </Avatar>
         }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
+        
         title={el.name}
         subheader={el.madeby}
       />
@@ -90,3 +86,4 @@ const handleAdd = ()=>{
     </Card>
   );
 }
+
