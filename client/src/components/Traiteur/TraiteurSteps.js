@@ -101,7 +101,7 @@ export default function TraiteurSteps() {
 
   return (
     <div className={classes.root}>
-      <Stepper activeStep={activeStep} orientation="vertical">
+      <Stepper activeStep={activeStep} orientation="vertical" >
         {steps.map((label, index) => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>

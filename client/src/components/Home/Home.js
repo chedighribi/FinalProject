@@ -3,6 +3,7 @@ import CarouselFront from './CarouselFront';
 import Who from './Who';
 import Why from './Why';
 import How from './How';
+import Footer from './Footer'
 
 
 const Home =()=>{
@@ -13,6 +14,7 @@ const Home =()=>{
             <Who />
             <Why />
             <How />
+            <Footer />
         </div>
     )
 }
