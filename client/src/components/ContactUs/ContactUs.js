@@ -22,7 +22,7 @@ const ContactUs = () => {
       <form>
         <label>First Name</label>
         <input
-          value={firstName}
+          value={firstName} 
           onChange={(e) => setFirstName(e.target.value)}
           type="text"
         />
