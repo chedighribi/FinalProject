@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ADD_BOX, DELETE_BOX, GET_BOX } from "../constantes/actionType";
+import { GET_BOX } from "../constantes/actionType";
 
 export const getBox = () => (dispatch) => {
   axios
@@ -23,10 +23,9 @@ export const deleteBox = ({ id }) => (dispatch) => {
   axios
     .delete(`/api/deletebox/${id}`)
     .then((res) =>
-      dispatch({
-        type: DELETE_BOX,
-        payload: res.data, // { msg: "box deleted", boxdeleted }
-      })
+      dispatch(
+        getBox()
+    )
     )
     .catch((err) => {
       console.log(err);
