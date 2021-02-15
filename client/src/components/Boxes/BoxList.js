@@ -4,17 +4,6 @@ import { getBox } from "../../redux/actions/boxAction";
 import BoxCard from "./BoxCard";
 import { Link } from "react-router-dom";
 
-<<<<<<< HEAD
-
-    return(
-        <div>
-            {boxs && boxs.map((el)=><BoxCard el={el} key = {el._id}/>)}
-        
-        </div>
-    )
-}
-export default BoxList ;
-=======
 const BoxList = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -33,4 +22,3 @@ const BoxList = () => {
   );
 };
 export default BoxList;
->>>>>>> main
