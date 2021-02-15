@@ -12,6 +12,11 @@ import {KeyboardDatePicker, MuiPickersUtilsProvider} from '@material-ui/pickers'
 import DateFnsUtils from '@date-io/date-fns';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
+import {useDispatch} from 'react-redux';
+import {addTraiteur} from '../../redux/actions/traiteurAction'
+import {getTraiteur} from '../../redux/actions/traiteurAction'
+import {useEffect} from 'react'
+
 
 
 
@@ -39,29 +44,55 @@ function getSteps() {
 
 
 
-function getStepContent(step) {
+export default function TraiteurSteps() {
+      // The first commit of Material-UI
+      const [date, setDate] = useState("");
+      const [nPerson, setNperson] = useState();
+      const [adress, setAdress] = useState("");
+      const [type, setType] = useState("");
+      const [phone, setPhone] = useState();
+      const [email, setEmail] = useState("");
+      const [special, setSpecial] = useState("");
+
+    const dispatch= useDispatch();
+    useEffect(()=>{
+      dispatch(getTraiteur());
+  }, []);
+    const handleTraiteur =()=> {
+      dispatch (addTraiteur({date,nPerson,adress,type,phone,email,special}))
+    }
+  
+      const handleDateChange = (date) => {
+        setDate(date);
+      };
+    
+  console.log(date)
+  function getStepContent(step) {
+
+  
     
   switch (step) {
     case 0:
-        return        <TextField id="standard-basic" label="Standard" />
+        return        <TextField id="standard-basic" label="Standard" value={email}  onChange={(e) => setEmail(e.target.value)} />
         ;
     case 1:
-        return        <TextField id="standard-basic" label="Standard" />
+        return        <TextField id="standard-basic" label="Standard" value={phone}  onChange={(e) => setPhone(e.target.value)} />
         ;
         
     case 2:
-      return    <MuiPickersUtilsProvider utils={DateFnsUtils} > <KeyboardDatePicker margin="normal" id="date-picker-dialog" label="Date picker dialog" format="MM/dd/yyyy" KeyboardButtonProps={{ 'aria-label': 'change date', }} /> </MuiPickersUtilsProvider>
+      return    <MuiPickersUtilsProvider utils={DateFnsUtils} > <KeyboardDatePicker margin="normal" id="date-picker-dialog" label="Date picker dialog" format="MM/dd/yyyy" value={date}  onChange={handleDateChange}    KeyboardButtonProps={{ 'aria-label': 'change date', }} /> </MuiPickersUtilsProvider>
       ;
     case 3:
-      return        <TextField id="standard-basic" label="Standard" />
+      return        <TextField id="standard-basic" label="Standard" value={nPerson}  onChange={(e) => setNperson(e.target.value)}/>
       ;
     case 4:
-      return        <TextField id="standard-basic" label="Standard" />
+      return        <TextField id="standard-basic" label="Standard" value={adress}  onChange={(e) => setAdress(e.target.value)} />
       ;
     case 5:
       return        <Select
       labelId="demo-simple-select-label"
       id="demo-simple-select"
+      value={type}  onChange={(e) => setType(e.target.value)}
     >
       <MenuItem >Full Day</MenuItem>
       <MenuItem >Brunch</MenuItem>
@@ -69,7 +100,7 @@ function getStepContent(step) {
     </Select>
       ;
     case 6:
-      return        <TextField id="standard-basic" label="Standard" /> 
+      return        <TextField id="standard-basic" label="Standard" value={special}  onChange={(e) => setSpecial(e.target.value)}/> 
       ;
 
     case 7:
@@ -82,7 +113,7 @@ function getStepContent(step) {
   }
 }
 
-export default function TraiteurSteps() {
+
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
@@ -116,14 +147,22 @@ export default function TraiteurSteps() {
                   >
                     Back
                   </Button>
+                  {activeStep === steps.length - 1 ?
                   <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={handleTraiteur}
+                    className={classes.button}
+                  >
+                     Finish
+                  </Button>: <Button
                     variant="contained"
                     color="primary"
                     onClick={handleNext}
                     className={classes.button}
                   >
-                    {activeStep === steps.length - 1 ? "Finish" : "Next"}
-                  </Button>
+                     Next
+                  </Button>}
                 </div>
               </div>
             </StepContent>

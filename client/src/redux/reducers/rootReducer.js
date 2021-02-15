@@ -4,7 +4,8 @@ import { boxReducer } from "./boxReducer";
 import { ContactUsReducer } from "./ContactUsReducer";
 import {cardReducer} from './cardReducer'
 import authReducer from './userReducer'
+import {traiteurReducer} from './traiteurReducer'
 
-export  const rootReducer= combineReducers({boxReducer,tataReducer,cardReducer,authReducer, ContactUsReducer})
+export  const rootReducer= combineReducers({boxReducer,tataReducer,cardReducer,authReducer, ContactUsReducer,traiteurReducer})
 
 

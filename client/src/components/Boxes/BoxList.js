@@ -9,9 +9,11 @@ const BoxList =()=>{
     }, []);
     const boxs = useSelector((state)=>state.boxReducer.boxs.box);
 
+
     return(
         <div>
             {boxs && boxs.map((el)=><BoxCard el={el} key = {el._id}/>)}
+        
         </div>
     )
 }
