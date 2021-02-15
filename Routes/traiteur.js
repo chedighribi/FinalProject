@@ -33,7 +33,7 @@ router.post('/traiteur', async (req,res)=>{
 // get traiteur request
 // private
 
-router.get('/traiteur',isAuth, isAdmin, async (req,res)=>{
+router.get('/traiteur', isAuth, async (req,res)=>{
     try {
         const Request = await traiteur.find();
         res.json({msg:'Request fetched',Request});

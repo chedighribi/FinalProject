@@ -96,6 +96,14 @@ router.get("/users", isAuth, isAdmin, async (req, res) => {
   }
 });
 
+//@route GET api/user
+//@desc Get authentified user
+//@access Private
+router.get('/user', isAuth, (req, res) => {
+  res.status(200).send({ user: req.user });
+});
+
+
 // @route : http://localhost:5000/api/edituser/:_id
 // edit user profile
 // private
