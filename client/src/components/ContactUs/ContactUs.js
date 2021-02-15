@@ -11,9 +11,9 @@ const ContactUs = () => {
 
   const dispatch = useDispatch();
 
-  const add = () => {
+  const add = (e) => {
+    e.preventDefault();
     dispatch(cntctUs({ firstName, lastName, email, phone, message }));
-    console.log(message, firstName);
   };
 
   return (
