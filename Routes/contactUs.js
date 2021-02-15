@@ -24,10 +24,10 @@ router.post("/contactus", contactUsRules(), validator, async (req, res) => {
   }
 });
 
-// @route : http://localhost:5000/api/allcontactus
+// @route : http://localhost:5000/api/contactus
 // get all contact-us
 // private
-router.get("/allcontactus", isAuth, isAdmin, async (req, res) => {
+router.get("/contactus", isAuth, isAdmin, async (req, res) => {
   try {
     const allContactUs = await contactUs.find();
     res.json({ msg: "all contact us fetched", allContactUs });
