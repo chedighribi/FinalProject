@@ -17,7 +17,7 @@ export default function NavBar() {
     dispatch(logout());
   };
 
-  if (!token && !user) {
+  if (!user) {
     return (
       <div>
         <AppBar position="static">
