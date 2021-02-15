@@ -3,7 +3,7 @@ const schema = mongoose.Schema;
 
 const traiteurSchema = new schema({
     date : {
-        type : Date,
+        type : String,
         required : true,
     },
     nPerson : {
@@ -25,7 +25,6 @@ const traiteurSchema = new schema({
     
     type : {
         type : String,
-        required : true,
     },
     special : {
         type : String,

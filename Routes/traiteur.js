@@ -11,7 +11,7 @@ const traiteur = require ('../Models/traiteurModel');
 // public
 
 router.post('/traiteur', async (req,res)=>{
-    const {date, nPerson, adress, type, email, phone}= req.body;
+    const {date, nPerson, adress, type, email, phone, special}= req.body;
     try {
         const newTraiteur = new traiteur ({
             date,
@@ -19,7 +19,8 @@ router.post('/traiteur', async (req,res)=>{
             adress,
             type,
             email,
-            phone
+            phone,
+            special
         });
         const traiteurs = await newTraiteur.save();
         res.json({msg:'request traiteur saved',traiteurs});
@@ -32,7 +33,7 @@ router.post('/traiteur', async (req,res)=>{
 // get traiteur request
 // private
 
-router.get('/traiteurrequest',isAuth, isAdmin, async (req,res)=>{
+router.get('/traiteur',isAuth, isAdmin, async (req,res)=>{
     try {
         const Request = await traiteur.find();
         res.json({msg:'Request fetched',Request});
