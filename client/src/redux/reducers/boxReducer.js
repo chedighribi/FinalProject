@@ -1,17 +1,17 @@
-import {GET_BOX} from '../constantes/actionType';
+import { ADD_BOX, GET_BOX } from "../constantes/actionType";
 
 const initState = {
-    boxs:[],
+  boxs: [],
 };
 
-export const boxReducer = (state = initState, {type,payload})=>{
-    switch (type) {
-        case GET_BOX : 
-        return {
-            ...state,
-            boxs : payload
-        };
-        default :
-        return state;
-    }
+export const boxReducer = (state = initState, { type, payload }) => {
+  switch (type) {
+    case GET_BOX:
+      return {
+        ...state,
+        boxs: payload,
+      };
+    default:
+      return state;
+  }
 };
