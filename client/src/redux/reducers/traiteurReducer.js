@@ -6,7 +6,7 @@ const initState = {
 
 export const traiteurReducer = (state = initState, {type,payload})=>{
     
-    switch (type) {
+  switch (type) {
         case GET_TRAITEUR : 
         return {
             ...state,

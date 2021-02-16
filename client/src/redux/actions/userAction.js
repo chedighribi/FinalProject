@@ -82,8 +82,10 @@ export const getAuthUser = () => async (dispatch) => {
       headers: {
         'auth-token': localStorage.getItem('token'),
       },
-    };
-    const res = await axios.get('/api/auth/user', config);
+    };        
+    console.log(config) 
+
+    const res = await axios.get('/api/user', config);
     dispatch({
       type: GET_AUTH_USER,
       payload: res.data, // {user: req.user}
