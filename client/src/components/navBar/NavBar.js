@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 
 export default function NavBar() {
   const user = useSelector((state) => state.authReducer.user);
+  const isAuth = useSelector((state) => state.authReducer.isAuth);
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
 
@@ -17,7 +18,7 @@ export default function NavBar() {
     dispatch(logout());
   };
 
-  if (!user) {
+  if (!isAuth) {
     return (
       <div>
         <AppBar position="static">
