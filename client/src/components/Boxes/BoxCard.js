@@ -10,10 +10,11 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import ShareIcon from '@material-ui/icons/Share';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Button from '@material-ui/core/Button';
 import {useDispatch} from 'react-redux'
-import {ADD} from '../../redux/actions/shopAction'
+import {ADD,ADD2} from '../../redux/actions/shopAction'
+import {useSelector} from 'react-redux'
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -42,12 +43,18 @@ const useStyles = makeStyles((theme) => ({
 
 export default function BoxCard({el}) {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
   const dispatch=useDispatch();
+  const t = useSelector(state=> state.cardReducer.Shopp);
 
 const handleAdd = ()=>{
-  dispatch(ADD(el))
-}
+  let num =1;
+  let y = t.find((s)=>s._id==el._id);
+   if (!y)  { 
+    el.num = num;
+ (dispatch(ADD(el)))
+}else 
+ (dispatch(ADD2(el)))
+};
 
 
 

@@ -11,8 +11,6 @@ import { useDispatch } from "react-redux";
 export default function NavBar() {
   const user = useSelector((state) => state.authReducer.user);
   const dispatch = useDispatch();
-  const token = localStorage.getItem("token");
-
   const handleLogout = () => {
     dispatch(logout());
   };

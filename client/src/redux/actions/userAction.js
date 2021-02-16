@@ -80,7 +80,7 @@ export const getAuthUser = () => async (dispatch) => {
     //headers
     const config = {
       headers: {
-        'x-auth-token': localStorage.getItem('token'),
+        'auth-token': localStorage.getItem('token'),
       },
     };
     const res = await axios.get('/api/auth/user', config);
