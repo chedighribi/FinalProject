@@ -12,8 +12,6 @@ export default function NavBar() {
   const user = useSelector((state) => state.authReducer.user);
   const isAuth = useSelector((state) => state.authReducer.isAuth);
   const dispatch = useDispatch();
-  const token = localStorage.getItem("token");
-
   const handleLogout = () => {
     dispatch(logout());
   };
