@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { cntctUs } from "../../redux/actions/contactUsAction";
 import { useDispatch } from "react-redux";
+import {useEffect} from "react"
+import {getContactUs} from '../../redux/actions/contactUsAction'
+
+
 
 const ContactUs = () => {
   const [firstName, setFirstName] = useState("");
@@ -10,6 +14,11 @@ const ContactUs = () => {
   const [message, setMessage] = useState("");
 
   const dispatch = useDispatch();
+
+useEffect(() => {
+  dispatch(getContactUs());
+  }, []);
+
 
   const add = (e) => {
     e.preventDefault()

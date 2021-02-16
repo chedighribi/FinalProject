@@ -10,8 +10,18 @@ import TataList from "./components/tatas/TataList";
 import ContactUs from "./components/ContactUs/ContactUs";
 import Login from "./components/RegisterAndLogin/Login";
 import AddBox from "./components/Boxes/AddBox";
+import {getAuthUser} from "./redux/actions/userAction"
+import {useDispatch} from 'react-redux';
+import {useEffect} from "react"
 
 function App() {
+  const dispatch = useDispatch();
+  const getUser =()=>dispatch(getAuthUser());
+
+  useEffect(() => {
+    getUser();
+    }, []);
+
   return (
     <div className="App">
       <BrowserRouter>
