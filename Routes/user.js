@@ -99,7 +99,7 @@ router.get("/users", async (req, res) => {
 //@route GET api/user
 //@desc Get authentified user
 //@access Private
-router.get('/user', (req, res) => {
+router.get('/user', isAuth,(req, res) => {
   res.status(200).send({ user: req.user });
 });
 

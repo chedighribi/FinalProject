@@ -8,13 +8,12 @@ const isAdmin = require("../Middlewares/isAdmin");
 // post contact-us
 // public
 router.post("/contactus", contactUsRules(), validator, async (req, res) => {
-  const { firstName, lastName, email, phone, message } = req.body;
+  const { firstName, lastName, email, message } = req.body;
   try {
     const newContactUs = new contactUs({
       firstName,
       lastName,
       email,
-      phone,
       message,
     });
     const contact = await newContactUs.save();
