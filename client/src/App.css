@@ -291,3 +291,135 @@
 .table thead th {
   border-bottom: 2px solid #f36846;
 }
+
+/*contactUS*/
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.contact-us {
+  --primary-font: "Montserrat", sans-serif;
+  --primary-bg-color: rgba(255, 255, 255, 1);
+  --secondary-bg-color: #f36846;
+  --primary-accent-color: #719a7c;
+  --primary-font-color: beige;
+  --primary-link-color: #719a7c;
+  --primary-border: 1px solid rgba(0, 0, 0, 0.3);
+  --primary-box-shadow: 5px 5px 1px #f36846;
+  align-items: center;
+  justify-items: center;
+  font-size: 18px;
+  display: grid;
+  grid-template-areas: "header header" "form details" "footer footer";
+  grid-template-columns: 1fr 1fr;
+  font-family: var(--primary-font);
+  background: var(--primary-bg-color);
+  padding: 40px;
+  width: 90%;
+}
+a {
+  color: var(--primary-link-color);
+}
+
+.contact-form {
+  margin-top: 70px;
+}
+
+header h1 {
+  font-size: 48px;
+  font-weight: 700;
+}
+.contact-form {
+  grid-area: form;
+}
+.contact-form .name {
+  display: flex;
+  justify-content: space-between;
+}
+.contact-form input,
+.contact-form textarea,
+.contact-form button {
+  font-family: var(--primary-font);
+  outline: none;
+  font-size: 18px;
+}
+.contact-form input,
+.contact-form textarea {
+  line-height: 40px;
+  border: 0;
+  border-bottom: var(--primary-border);
+}
+.contact-form input {
+  height: 40px;
+}
+.contact-form input[type="email"],
+.contact-form textarea {
+  margin-top: 20px;
+  width: 100%;
+}
+.contact-form input[type="text"] {
+  width: 45%;
+}
+.contact-form textarea {
+  resize: none;
+}
+.contact-form .submit {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+.contact-form .submit button {
+  height: 40px;
+  line-height: 40px;
+  padding: 0 20px;
+  border: 0;
+  background: var(--primary-accent-color);
+  box-shadow: var(--primary-box-shadow);
+  transition: 0.2s all ease-in-out;
+}
+.contact-form .submit button:hover {
+  background: var(--secondary-bg-color);
+  color: var(--primary-bg-color);
+  box-shadow: 5px 5px 1px var(--primary-link-color);
+}
+.contact-form .submit h2 {
+  height: 40px;
+  line-height: 40px;
+  padding: 0 20px;
+  border: 0;
+  font-size: 18px;
+}
+.contact-form .submit h2 a:hover {
+  text-decoration: none;
+}
+.reasons-why {
+  grid-area: details;
+  border-left: var(--primary-border);
+  padding-left: 40px;
+}
+.reasons-why h2 {
+  font-size: 28px;
+}
+.reasons-why ul {
+  margin-top: 40px;
+  padding-left: 40px;
+}
+.reasons-why ul li {
+  margin: 20px 0;
+  font-size: 18px;
+}
+::selection {
+  background: var(--primary-accent-color);
+}
+input,
+textarea,
+[contenteditable] {
+  width: 2px;
+  caret-color: var(--primary-accent-color);
+}
+.emailCnt {
+  color: #f36846;
+}
