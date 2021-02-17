@@ -1,31 +1,30 @@
 import axios from "axios";
-import {GET_TATA} from "../constantes/actionType";
+import { GET_TATA } from "../constantes/actionType";
 
-export const getTata=()=>(dispatch)=>{
+export const getTata = () => (dispatch) => {
   axios
-  .get('/api/tata' )
-  .then((res)=>dispatch({type : GET_TATA, payload:res.data}))
-  .catch((err)=> console.log(err))
+    .get("/api/tata")
+    .then((res) => dispatch({ type: GET_TATA, payload: res.data }))
+    .catch((err) => console.log(err));
 };
 
-export const editTata = (id,editedTata) => (dispatch) => {
+export const editTata = (id, editedTata) => (dispatch) => {
   axios
-    .put(`/api/editata/${id}`,editedTata)
+    .put(`/api/edittata/${id}`, editedTata)
     .then((res) => dispatch(getTata()))
     .catch((err) => console.log(err));
 };
 
-export const deleteTata = (id)=>(dispatch)=>{
+export const deleteTata = (id) => (dispatch) => {
   axios
-  .delete(`/api/delete/${id}`)
-  .then ((res)=> dispatch(getTata()))
-  .catch((err)=> console.log(err));
+    .delete(`/api/deletetata/${id}`)
+    .then((res) => dispatch(getTata()))
+    .catch((err) => console.log(err));
 };
 
-
-export const addTata=(newTata)=>(dispatch)=>{
+export const addTata = (newTata) => (dispatch) => {
   axios
-  .post('/api/addTata' , newTata)
-  .then((res)=>dispatch(getTata()))
-  .catch((err)=> console.log(err))
+    .post("/api/tataplus", newTata)
+    .then((res) => dispatch(getTata()))
+    .catch((err) => console.log(err));
 };
