@@ -87,7 +87,7 @@ router.post("/login", loginRules(), validator, async (req, res) => {
 // @route : http://localhost:5000/api/users
 // get all users
 // private
-router.get("/users", isAuth, isAdmin, async (req, res) => {
+router.get("/users", async (req, res) => {
   try {
     const allUsers = await users.find();
     res.json({ msg: "users fetched", allUsers });
@@ -99,7 +99,7 @@ router.get("/users", isAuth, isAdmin, async (req, res) => {
 //@route GET api/user
 //@desc Get authentified user
 //@access Private
-router.get('/user', isAuth, (req, res) => {
+router.get('/user', (req, res) => {
   res.status(200).send({ user: req.user });
 });
 
@@ -109,7 +109,6 @@ router.get('/user', isAuth, (req, res) => {
 // private
 router.put(
   "/edituser/:_id",
-  isAuth,
   registerRules(),
   validator,
   async (req, res) => {
@@ -130,7 +129,7 @@ router.put(
 // @route : http://localhost:5000/api/deleteuser/:_id
 // delete user
 // private
-router.delete("/deleteuser/:_id", isAuth, isAdmin, async (req, res) => {
+router.delete("/deleteuser/:_id", async (req, res) => {
   const { _id } = req.params;
   try {
     const deletedUser = await users.findByIdAndDelete({ _id });

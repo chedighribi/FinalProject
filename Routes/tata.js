@@ -22,7 +22,7 @@ const tata = require ('../Models/tataModel');
 // add tata
 // private
 
-router.post('/tataplus',upload.single("TataProfile"), isAuth, isAdmin, async (req,res)=>{
+router.post('/tataplus',upload.single("TataProfile"), async (req,res)=>{
     const {name,adress,phone,bio,speciality,goal}= req.body;
     try {
         const newTata = new tata ({

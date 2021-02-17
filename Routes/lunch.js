@@ -12,7 +12,7 @@ const lunch = require ('../Models/lunchModel');
 // add order
 // public
 
-router.post('/lunch', isAuth, async (req,res)=>{
+router.post('/lunch', async (req,res)=>{
     const {time, adress, special,totalPrice}= req.body;
     const token = req.headers['auth-token'];
     const decoded = await jwt.verify(token, config.get("SECRETKEY"));

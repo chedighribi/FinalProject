@@ -72,7 +72,7 @@ const handleAdd = ()=>{
       />
       <CardMedia
         className={classes.media}
-        image="/static/images/cards/paella.jpg"
+        image=""
         title="Paella dish"
       />
       <CardContent>
