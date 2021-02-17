@@ -1,6 +1,7 @@
-const jwt = require ('jsonwebtoken');
-const config = require ('config');
-const User = require ('../Models/userModel');
+const jwt = require("jsonwebtoken");
+const config = require("config");
+const User = require("../Models/userModel");
+
 
 const isAuth = async (req,res,next)=>{
     try {
@@ -22,6 +23,11 @@ const isAuth = async (req,res,next)=>{
     } catch (error) {
         return res.status(400).json({msg:'Token not valid',error})
     }
+    req.user = Tuser;
+    next();
+  } catch (error) {
+    return res.status(400).json({ msg: "Token not valid", error });
+  }
 };
 
 module.exports = isAuth;
