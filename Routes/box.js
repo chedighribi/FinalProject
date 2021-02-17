@@ -35,7 +35,9 @@ router.post("/addbox", upload.single("BoxImage"), async (req, res) => {
 // get boxes
 // public
 
+
 router.get("/lunch", isAuth, async (req, res) => {
+
   try {
     const box = await boxes.find();
     res.json({ msg: "boxes fetched", box });

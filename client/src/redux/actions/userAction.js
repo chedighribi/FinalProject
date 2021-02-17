@@ -75,17 +75,24 @@ export const loginUser = (formData) => async (dispatch) => {
 // Get auth user
 export const getAuthUser = () => async (dispatch) => {
   dispatch(userLoading());
-
+  if (localStorage.token) {
+    axios.defaults.headers.common["auth-token"] = localStorage.token;
+  // localStorage.setItem('token', token);
+    } else {    delete axios.defaults.headers.common["auth-token"];
+  // localStorage.removeItem("token");0  }
+   }
   try {
     //headers
-    const config = {
+    /*const config = {
       headers: {
         "auth-token": localStorage.getItem("token"),
       },
-    };
-    console.log(config);
 
-    const res = await axios.get("/api/user", config);
+    };        
+    console.log(config) */
+
+    const res = await axios.get('/api/user');
+
     dispatch({
       type: GET_AUTH_USER,
       payload: res.data, // {user: req.user}
