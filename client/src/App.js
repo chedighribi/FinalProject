@@ -13,6 +13,7 @@ import AddBox from "./components/Boxes/AddBox";
 import {getAuthUser} from "./redux/actions/userAction"
 import {useDispatch} from 'react-redux';
 import {useEffect} from "react"
+import Myorder from "./components/my orders/myOrder";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ function App() {
         <Route path="/contactus" render={() => <ContactUs />} />
         <Route path="/login" render={() => <Login />} />
         <Route path="/api/addbox" render={() => <AddBox />} />
+        <Route path="/myorders" render={()=> <Myorder />} />
       </BrowserRouter>
     </div>
   );
