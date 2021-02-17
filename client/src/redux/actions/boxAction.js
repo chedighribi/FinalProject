@@ -10,14 +10,15 @@ export const getBox = () => (dispatch) => {
     });
 };
 
-export const addBox = (newBox) => (dispatch) => {
-  axios
-    .post("/api/addbox", newBox)
-    .then((res) => dispatch(getBox()))
-    .catch((err) => {
-      console.log(err);
-    });
+export const addBox = (newBox) => async (dispatch) => {
+  try {
+    const res = await axios.post("/api/addbox", newBox);
+    dispatch(getBox());
+  } catch (error) {
+    console.log(error);
+  }
 };
+
 
 export const deleteBox = ({ id }) => (dispatch) => {
   axios

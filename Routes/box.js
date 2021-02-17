@@ -20,11 +20,7 @@ const boxes = require("../Models/boxModel");
 // add box
 // private
 
-router.post(
-  "/addbox",
-  upload.single("BoxImage"),
-  isAuth,
-  isAdmin,
+router.post("/addbox",upload.single("BoxImage"),
   async (req, res) => {
     const { price, name, ingredient, madeby } = req.body;
     try {
