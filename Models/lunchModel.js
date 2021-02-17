@@ -7,15 +7,16 @@ const lunchSchema = new schema({
         default : Date.now()
     },
     name :{
-        type : String
+        type : String,
+        required : true
     },
     
     adress : {
         type : String,
-        required : true
     },
     phone : {
-        type : Number
+        type : Number,
+        required : true
     }
     ,
     special : {
@@ -24,6 +25,7 @@ const lunchSchema = new schema({
     totalPrice : {
         type : Number,
         required : true
-    }
+    },
+    order : [{}]
 })
 module.exports = lunch = mongoose.model("lunch",lunchSchema);

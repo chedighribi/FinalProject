@@ -52,7 +52,9 @@ export const loginUser = (formData) => async (dispatch) => {
     dispatch({
       type: LOGIN_USER,
       payload: res.data, // { msg: 'Logged in with success', user, token }
+      
     });
+    
   } catch (error) {
     console.dir(error);
 
