@@ -1,5 +1,4 @@
 import axios from "axios";
-import { GET_CONTACT_US } from "../constantes/actionType";
 
 export const getContactUs = () => (dispatch) => {
   axios

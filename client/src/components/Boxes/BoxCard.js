@@ -48,7 +48,7 @@ export default function BoxCard({el}) {
 
 const handleAdd = ()=>{
   let num =1;
-  let y = t.find((s)=>s._id==el._id);
+  let y = t.find((s)=>s._id===el._id);
    if (!y)  { 
     el.num = num;
  (dispatch(ADD(el)))

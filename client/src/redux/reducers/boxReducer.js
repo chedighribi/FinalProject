@@ -1,4 +1,4 @@
-import { ADD_BOX, GET_BOX } from "../constantes/actionType";
+import { GET_BOX } from "../constantes/actionType";
 
 const initState = {
   boxs: [],

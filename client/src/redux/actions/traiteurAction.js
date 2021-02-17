@@ -1,5 +1,4 @@
 import axios from "axios";
-import {GET_TRAITEUR} from "../constantes/actionType";
 
 
 export const getTraiteur=()=>(dispatch)=>{

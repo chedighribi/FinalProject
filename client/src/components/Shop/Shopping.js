@@ -1,5 +1,6 @@
 import React from 'react'
 import {useSelector} from 'react-redux';
+import Tab from './Tab'
 
 const Shopping=()=>{
     const t = useSelector(state=> state.cardReducer.Shopp);
@@ -16,9 +17,11 @@ const Shopping=()=>{
  
     return(
         <div>
-            {t.map(el=> <div> <h3>{el.name}  =  {el.num}  X  {el.price}dt  = {el.price*el.num}.DT</h3> </div> )}
+            {t.map(el=> <Tab el={el} /> )}
             <h4>total = {total(t)} .DT</h4>
         </div>
     )
 }
 export default Shopping
+
+//<div> <h3>{el.name}  =  {el.num}  X  {el.price}dt  = {el.price*el.num}.DT</h3> </div>

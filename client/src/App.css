@@ -286,3 +286,8 @@
     font-weight: 600;
   }
 }
+
+/*tab*/
+.table thead th {
+  border-bottom: 2px solid #f36846;
+}
