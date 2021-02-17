@@ -37,6 +37,7 @@ import {
           ...payload,
         };
       case GET_AUTH_USER:
+        localStorage.getItem('token')
         return {
           ...state,
           isLoading: false,
