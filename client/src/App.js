@@ -10,9 +10,10 @@ import TataList from "./components/tatas/TataList";
 import ContactUs from "./components/ContactUs/ContactUs";
 import Login from "./components/RegisterAndLogin/Login";
 import AddBox from "./components/Boxes/AddBox";
-import { getAuthUser } from "./redux/actions/userAction";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import {getAuthUser} from "./redux/actions/userAction"
+import {useDispatch} from 'react-redux';
+import {useEffect} from "react"
+import Myorder from "./components/my orders/myOrder";
 import AddTata from "./components/tatas/AddTata";
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
         <Route path="/contactus" render={() => <ContactUs />} />
         <Route path="/login" render={() => <Login />} />
         <Route path="/api/addbox" render={() => <AddBox />} />
+        <Route path="/myorders" render={()=> <Myorder />} />
         <Route path="/api/addtata" render={() => <AddTata />} />
       </BrowserRouter>
     </div>

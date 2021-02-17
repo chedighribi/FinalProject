@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const isAuth = require("../Middlewares/isAuth");
-const isAdmin = require ("../Middlewares/isAdmin");
 const User = require ('../Models/userModel');
 const jwt = require("jsonwebtoken");
 const config = require("config");
@@ -36,9 +35,21 @@ router.post('/lunch', async (req,res)=>{
 // get orders
 // private
 
-router.get('/orders', isAuth, isAdmin, async(req,res)=>{
+router.get('/orders',  async(req,res)=>{
+    
     try {
         const lunchs = await lunch.find();
+        res.json({msg:'lunch fetched', lunchs})
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+router.get('/myorders',  async(req,res)=>{
+    
+    
+    try {
+        const lunchs = await lunch.find(phone);
         res.json({msg:'lunch fetched', lunchs})
     } catch (error) {
         console.log(error)
