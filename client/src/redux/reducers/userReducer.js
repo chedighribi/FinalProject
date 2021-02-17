@@ -26,6 +26,9 @@ import {
       case REGISTER_USER:
       case LOGIN_USER:
         localStorage.setItem('token', payload.token);
+        localStorage.setItem('name', payload.user.fullname);
+        localStorage.setItem('phone', payload.user.phone);
+
         return {
           ...state,
           isLoading: false,
@@ -43,6 +46,9 @@ import {
       case AUTH_ERRORS:
       case LOGOUT_USER:
         localStorage.removeItem('token');
+        localStorage.removeItem('name');
+        localStorage.removeItem('phone');
+
         return {
           ...state,
           token: null,

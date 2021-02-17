@@ -13,18 +13,17 @@ const lunch = require ('../Models/lunchModel');
 // public
 
 router.post('/lunch', async (req,res)=>{
-    const {time, adress, special,totalPrice}= req.body;
-    const token = req.headers['auth-token'];
-    const decoded = await jwt.verify(token, config.get("SECRETKEY"));
-    const user= await User.findById(decoded.id)
+    const {order,time, adress,phone, special,totalPrice,name}= req.body;
+    
     try {
         const newLunch = new lunch ({
-            name: user.fullname,
+            name,
             time,
             adress,
-            phone: user.phone,
+            phone,
             special,
-            totalPrice
+            totalPrice,
+            order
             });
         const Lunch = await newLunch.save();
         res.json({msg:'order saved',Lunch});
