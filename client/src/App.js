@@ -5,7 +5,7 @@ import RegisterSide from "./components/RegisterAndLogin/RegisterSide";
 import TraiteurSteps from "./components/Traiteur/TraiteurSteps";
 import Shopping from "./components/Shop/Shopping";
 import Home from "./components/Home/Home";
-import { BrowserRouter, Link, Route } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import TataList from "./components/tatas/TataList";
 import ContactUs from "./components/ContactUs/ContactUs";
 import Login from "./components/RegisterAndLogin/Login";
