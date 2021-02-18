@@ -23,8 +23,6 @@ function App() {
     getUser();
   }, []);
 
-  const Admin = useSelector((state) => state.authReducer.admin)
-  console.log(Admin)
 
 
   return (
