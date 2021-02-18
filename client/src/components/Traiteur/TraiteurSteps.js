@@ -46,7 +46,7 @@ function getSteps() {
 export default function TraiteurSteps() {
       // The first commit of Material-UI
       const [date, setDate] = useState("");
-      const [nPerson, setNperson] = useState();
+      const [nPerson, setNperson] = useState(0);
       const [adress, setAdress] = useState("");
       const [type, setType] = useState("");
       const [phone, setPhone] = useState();
@@ -59,6 +59,15 @@ export default function TraiteurSteps() {
   }, []);
     const handleTraiteur =()=> {
       dispatch (addTraiteur({date,nPerson,adress,type,phone,email,special}))
+      setActiveStep(0);
+      setDate('');
+      setNperson(0);
+      setAdress('');
+      setType('');
+      setPhone(0);
+      setEmail('');
+      setSpecial('');
+      alert("your order has been sent successfully")
     }
   
       const handleDateChange = (date) => {
@@ -174,6 +183,7 @@ export default function TraiteurSteps() {
           <Button onClick={handleReset} className={classes.button}>
             Reset
           </Button>
+          
         </Paper>
       )}
     </div>

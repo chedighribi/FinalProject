@@ -16,7 +16,7 @@ import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { useDispatch } from "react-redux";
-import { deleteTata } from "../../redux/actions/tataAction";
+import { deleteTata } from "../../../redux/actions/tataAction";
 import EditTataModal from "./EditTataModal";
 
 const useStyles = makeStyles((theme) => ({
@@ -51,6 +51,9 @@ export default function TataCard({ el }) {
     setExpanded(!expanded);
   };
 
+  const handleDeleteTata = () => {
+    dispatch(deleteTata(el._id));
+  };
 
   return (
     <Card className={classes.root}>
@@ -78,6 +81,7 @@ export default function TataCard({ el }) {
           {el.ingredient}
         </Typography>
       </CardContent>
+      <button onClick={handleDeleteTata}>Supprimer</button>
       <EditTataModal el={el} />
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">

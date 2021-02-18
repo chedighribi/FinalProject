@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getBox } from "../../redux/actions/boxAction";
-import BoxCard from "./BoxCard";
+import { getBox } from "../../../redux/actions/boxAction";
+import BoxCardA from "./BoxCardA";
 import { Link } from "react-router-dom";
 import {useState} from 'react'
-
 import {Input} from 'reactstrap';
 
 
@@ -24,9 +23,9 @@ const BoxList = () => {
     <div>
         <Input type='text' placeholder='filter by name' onChange={(e)=>setFilter(e.target.value)} value={filter} width='50px' />
       <div className='tataCard'>
-      {boxs && boxs.filter(el => ((el.name).toUpperCase()).includes((filter).toUpperCase())).map((el) => <BoxCard el={el} key={el._id} />)}
+      {boxs && boxs.filter(el => ((el.name).toUpperCase()).includes((filter).toUpperCase())).map((el) => <BoxCardA el={el} key={el._id} />)}
       </div>
-      <Link to="/api/addbox">
+      <Link to="/addbox">
         <button>add box</button>
       </Link>
     </div>

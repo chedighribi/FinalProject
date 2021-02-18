@@ -55,6 +55,7 @@ export const loginUser = (formData) => async (dispatch) => {
 
     const { errors, msg } = error.response.data;
 
+
     if (Array.isArray(errors)) {
       dispatch({
         type: AUTH_ERRORS,
