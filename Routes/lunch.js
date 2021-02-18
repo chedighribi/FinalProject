@@ -13,13 +13,15 @@ const lunch = require ('../Models/lunchModel');
 
 router.post('/lunch', async (req,res)=>{
     const {order,time, adress,phone, special,totalPrice,name}= req.body;
-    
+    const token = req.headers['auth-token'];  
+    const decoded = await jwt.verify(token, config.get("SECRETKEY"));
+    const user= await User.findById(decoded.id)
     try {
         const newLunch = new lunch ({
-            name,
+            name:user.name,
             time,
-            adress,
-            phone,
+            adress:user.adress,
+            phone:user.phone,
             special,
             totalPrice,
             order
@@ -45,11 +47,13 @@ router.get('/orders',  async(req,res)=>{
     }
 })
 
-router.get('/myorders',  async(req,res)=>{
-    
-    
-    try {
-        const lunchs = await lunch.find(phone);
+router.get('/myorders',isAuth,  async(req,res)=>{
+    const token = req.headers['auth-token'];  
+    const decoded = await jwt.verify(token, config.get("SECRETKEY"));
+    const user= await User.findById(decoded.id)
+    console.log(user)
+     try {
+        const lunchs = await lunch.find({phone:user.phone});
         res.json({msg:'lunch fetched', lunchs})
     } catch (error) {
         console.log(error)
