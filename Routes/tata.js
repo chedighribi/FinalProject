@@ -2,6 +2,7 @@ const router = require("express").Router();
 const multer = require("multer");
 const isAuth = require("../Middlewares/isAuth");
 const isAdmin = require("../Middlewares/isAdmin");
+const { addTataRules, validator } = require("../Middlewares/validator");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -20,23 +21,29 @@ const tata = require("../Models/tataModel");
 // add tata
 // private
 
-router.post("/tataplus", upload.single("TataProfile"), async (req, res) => {
-  const { name, adress, phone, bio, speciality, goal } = req.body;
-  try {
-    const newTata = new tata({
-      name,
-      adress,
-      phone,
-      bio,
-      speciality,
-      goal,
-    });
-    const tatta = await newTata.save();
-    res.json({ msg: "tata saved", tatta });
-  } catch (error) {
-    console.log(error);
+router.post(
+  "/tataplus",
+  upload.single("TataProfile"),
+  addTataRules(),
+  validator,
+  async (req, res) => {
+    const { name, adress, phone, bio, speciality, goal } = req.body;
+    try {
+      const newTata = new tata({
+        name,
+        adress,
+        phone,
+        bio,
+        speciality,
+        goal,
+      });
+      const tatta = await newTata.save();
+      res.json({ msg: "tata saved", tatta });
+    } catch (error) {
+      console.log(error);
+    }
   }
-});
+);
 
 // @route : http://localhost:5000/api/tata
 // get tata list
@@ -55,7 +62,7 @@ router.get("/tata", async (req, res) => {
 // edit tata profile
 // private
 
-router.put("/edittata/:_id", async (req, res) => {
+router.put("/edittata/:_id", addTataRules(), validator, async (req, res) => {
   const { _id } = req.params;
   try {
     const tataedited = await tata.findOneAndUpdate({ _id }, { $set: req.body });

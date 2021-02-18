@@ -4,22 +4,23 @@ import { getBox } from "../../redux/actions/boxAction";
 import BoxCard from "./BoxCard";
 import { Link } from "react-router-dom";
 import {useState} from 'react'
+
 import {getAuthUser} from '../../redux/actions/userAction'
 import {Input} from 'reactstrap';
 import SearchBar from "../navBar/SearchBar";
 
 
+
 const BoxList = () => {
   const dispatch = useDispatch();
-  const getUser =()=>dispatch(getAuthUser());
+
 
   useEffect(() => {
-    getUser();
     dispatch(getBox());
-    }, []);
+  }, []);
 
   const boxs = useSelector((state) => state.boxReducer.boxs.box);
-  const [filter, setFilter] = useState('');
+  const [filter, setFilter] = useState("");
 
   return (
     <div>
