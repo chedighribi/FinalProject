@@ -11,15 +11,13 @@ import SearchBar from "../navBar/SearchBar";
 
 const BoxList = () => {
   const dispatch = useDispatch();
-  const getUser =()=>dispatch(getAuthUser());
 
   useEffect(() => {
-    getUser();
     dispatch(getBox());
-    }, []);
+  }, []);
 
   const boxs = useSelector((state) => state.boxReducer.boxs.box);
-  const [filter, setFilter] = useState('');
+  const [filter, setFilter] = useState("");
 
   return (
     <div>
