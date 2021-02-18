@@ -9,9 +9,11 @@ const isAuth = async (req, res, next) => {
     if (!token) return res.status(401).send({ msg: "No token" });
     const decoded = await jwt.verify(token, config.get("SECRETKEY"));
 
+
     const Tuser = await User.findById(decoded.id);
     if (!Tuser) {
       return res.status(402).send({ msg: "denied" });
+
     }
     req.user = Tuser;
     next();

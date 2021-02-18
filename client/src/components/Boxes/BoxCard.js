@@ -59,6 +59,7 @@ const handleAdd = ()=>{
 
 
   return (
+    <div className='tataOne'>
     <Card className={classes.root}>
       <CardHeader
         avatar={
@@ -91,6 +92,7 @@ const handleAdd = ()=>{
       </CardActions>
       
     </Card>
+    </div>
   );
 }
 
