@@ -26,6 +26,15 @@ const contactUsRules = () => [
   body("message", "message is required").notEmpty(),
 ];
 
+const addTataRules = () => [
+  body("name", "name is required").notEmpty(),
+  body("adress", "adress is required").notEmpty(),
+  body("phone", "Put a valid phone number").isLength({ min: 8, max: 8 }),
+  body("bio", "bio is required").notEmpty(),
+  body("speciality", "specialty is required").notEmpty(),
+  body("goal", "goal is required").notEmpty(),
+];
+
 const validator = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -38,4 +47,10 @@ const validator = (req, res, next) => {
   next();
 };
 
-module.exports = { validator, registerRules, contactUsRules, loginRules };
+module.exports = {
+  validator,
+  registerRules,
+  contactUsRules,
+  loginRules,
+  addTataRules,
+};
