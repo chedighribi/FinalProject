@@ -15,7 +15,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import Myorder from "./components/my orders/myOrder";
 import AddTata from "./components/tatas/AddTata";
-import MrAdmin from "./components/Admin/MrAdmin";
 import { Spinner } from "reactstrap";
 
 function App() {
@@ -53,7 +52,6 @@ function App() {
         <Route path="/api/addbox" render={() => <AddBox />} />
         <Route path="/myorders" render={() => <Myorder />} />
         <Route path="/api/addtata" render={() => <AddTata />} />
-        <Route path="/mradmin" render={() => <MrAdmin />} />
       </BrowserRouter>
     </div>
   );

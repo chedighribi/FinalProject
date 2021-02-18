@@ -15,6 +15,10 @@ export default function NavBar() {
     dispatch(logout());
   };
 
+  const Admin = useSelector((state) => state.authReducer.admin)
+  console.log(Admin)
+
+
   if (!isAuth) {
     return (
       <div>

@@ -77,8 +77,8 @@ router.post("/login", loginRules(), validator, async (req, res) => {
     };
 
     const token = await jwt.sign(payload, config.get("SECRETKEY"));
-
-    res.send({ msg: "Logged in with success", user, token });
+    const admin=user.admin;
+    res.send({ msg: "Logged in with success", user, token, admin });
   } catch (error) {
     console.log(error);
   }
