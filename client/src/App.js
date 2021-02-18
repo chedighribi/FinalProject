@@ -19,6 +19,8 @@ import { Spinner } from "reactstrap";
 import BoxListA from './components/Admin/Boxes/BoxListA' 
 import TataListA from './components/Admin/Tatas/TataListA'
 import PrivateRoute from "./components/routes/PrivateRoute";
+import TraiteurReq from "./components/Admin/Traiteur/TraiteurReq";
+import AllContacts from "./components/Admin/Contactus/AllContacts";
 
 function App() {
   const dispatch = useDispatch();
@@ -57,6 +59,10 @@ function App() {
         <Route path="/addtata" render={() => <AddTata />} />
         <Route path="/managebox" render={() => <BoxListA />} />
         <Route path="/managetata" render={() => <TataListA />} />
+        <Route path="/traiteurrequest" render={() => <TraiteurReq />} />
+        <Route path="/allcontactus" render={() => <AllContacts />} />
+
+
       </BrowserRouter>
     </div>
   );

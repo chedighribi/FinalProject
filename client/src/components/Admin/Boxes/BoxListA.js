@@ -8,7 +8,7 @@ import {Input} from 'reactstrap';
 
 
 
-const BoxList = () => {
+const BoxListA = () => {
   const dispatch = useDispatch();
 
 
@@ -31,4 +31,4 @@ const BoxList = () => {
     </div>
   );
 };
-export default BoxList;
+export default BoxListA;

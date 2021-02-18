@@ -50,7 +50,7 @@ useEffect(() => {
   </div>
   <div className="reasons-why">
     <h2>Hate forms?</h2>
-    <ul>
+    <ul style={{listStyle:"none"}}>
       <li>22440449</li>
       <li><a href="mailto:hellokhalti@agmail.com" className="emailCnt">hellokhalti@gmail.com</a></li>
       <li>39, Avenue Mohamed 5 Aouina, Tunisie</li>
