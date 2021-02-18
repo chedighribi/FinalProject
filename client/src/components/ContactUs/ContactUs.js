@@ -10,7 +10,7 @@ const ContactUs = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLasttName] = useState("");
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState();
+  
   const [message, setMessage] = useState("");
 
   const dispatch = useDispatch();
@@ -22,8 +22,12 @@ useEffect(() => {
 
   const add = (e) => {
     e.preventDefault()
-    dispatch(cntctUs({ firstName, lastName, email, phone, message }));
+    dispatch(cntctUs({ firstName, lastName, email, message }));
     console.log(message, firstName);
+    setFirstName('');
+    setLasttName('');
+    setEmail('');
+    setMessage('');
   };
 
   return ( 

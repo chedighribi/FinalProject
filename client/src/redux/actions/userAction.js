@@ -56,15 +56,15 @@ export const loginUser = (formData) => async (dispatch) => {
   } catch (error) {
     console.dir(error);
 
-    const { errors, msg } = error.response.data;
+    // const { errors, msg } = error.response.data;
 
-    if (Array.isArray(errors)) {
-      errors.forEach((err) => alert(err.msg));
-    }
-    console.log(errors);
-    if (msg) {
-      alert(msg);
-    }
+    // if (Array.isArray(errors)) {
+    //   errors.forEach((err) => alert(err.msg));
+    // }
+    // console.log(errors);
+    // if (msg) {
+    //   alert(msg);
+    // }
 
     dispatch({
       type: AUTH_ERRORS,

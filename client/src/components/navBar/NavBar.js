@@ -7,12 +7,15 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { logout } from "../../redux/actions/userAction";
 import { useDispatch } from "react-redux";
+import { resetorder } from "../../redux/actions/myorderAction";
+
 
 export default function NavBar() {
   const isAuth = useSelector((state) => state.authReducer.isAuth);
   const dispatch = useDispatch();
   const handleLogout = () => {
-    dispatch(logout());
+    dispatch(logout())
+    dispatch(resetorder())
   };
 
   const Admin = useSelector((state) => state.authReducer.admin)

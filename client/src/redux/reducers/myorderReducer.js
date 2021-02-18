@@ -1,4 +1,4 @@
-import { GET_MY_ORDER } from "../constantes/actionType";
+import { GET_MY_ORDER ,RESET_MY_ORDERS} from "../constantes/actionType";
 
 const initState = {
   myorder: [],
@@ -11,6 +11,11 @@ export const myorderReducer = (state = initState, { type, payload }) => {
         ...state,
         myorder: payload,
       };
+      case RESET_MY_ORDERS:
+        return {
+          ...state,
+          myorder: [],
+        };
     default:
       return state;
   }

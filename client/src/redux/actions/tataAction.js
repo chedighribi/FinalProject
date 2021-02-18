@@ -21,7 +21,7 @@ export const addTata = (newTata) => (dispatch) => {
     })
     .catch((error) => {
       console.dir(error);
-      const { errors, msg } = error.response.data;
+      const { errors} = error.response.data;
       if (Array.isArray(errors)) {
         dispatch({
           type: TATA_ERRORS,
