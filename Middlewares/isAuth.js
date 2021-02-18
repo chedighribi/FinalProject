@@ -10,15 +10,17 @@ const isAuth = async (req, res, next) => {
     const decoded = await jwt.verify(token, config.get("SECRETKEY"));
 
 
-    const Tuser = await User.findById(decoded.id);
-    if (!Tuser) {
-      return res.status(402).send({ msg: "denied" });
 
-    }
-    req.user = Tuser;
-    next();
-  } catch (error) {
-    return res.status(400).json({ msg: "Token not valid", error });
+        const Tuser= await User.findById(decoded.id)
+        if (!Tuser){
+            return res.status(402).send({msg:'denied'});
+        }
+        req.user=Tuser;
+        next();
+    } catch (error) {
+        return res.status(400).json({msg:'Token not valid',error});
+    
+
   }
 };
 

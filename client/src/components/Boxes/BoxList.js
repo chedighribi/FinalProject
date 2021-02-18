@@ -4,13 +4,16 @@ import { getBox } from "../../redux/actions/boxAction";
 import BoxCard from "./BoxCard";
 import { Link } from "react-router-dom";
 import {useState} from 'react'
+
 import {getAuthUser} from '../../redux/actions/userAction'
 import {Input} from 'reactstrap';
 import SearchBar from "../navBar/SearchBar";
 
 
+
 const BoxList = () => {
   const dispatch = useDispatch();
+
 
   useEffect(() => {
     dispatch(getBox());
