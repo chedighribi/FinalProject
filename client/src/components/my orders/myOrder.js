@@ -5,13 +5,14 @@ import {getMyOrder} from '../../redux/actions/myorderAction'
 
 const Myorder =()=>{
     const dispatch = useDispatch();
+    const myorders =()=> dispatch(getMyOrder());
     useEffect(() => {
-        dispatch(getMyOrder());
+        myorders();
       }, []);
     const t = useSelector(state => state.myorderReducer.myorder);
     return (
         <div>
-            {t.map((el)=> el) }
+            {t.map((el)=> <h3>{el.adress}</h3>) }
         </div>
     )
 }
