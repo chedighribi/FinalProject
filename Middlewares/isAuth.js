@@ -5,7 +5,6 @@ const User = require("../Models/userModel");
 const isAuth = async (req, res, next) => {
   try {
     const token = req.headers["auth-token"];
-    console.log(token);
     if (!token) return res.status(401).send({ msg: "No token" });
     const decoded = await jwt.verify(token, config.get("SECRETKEY"));
 
