@@ -17,12 +17,8 @@ const isAuth = async (req,res,next)=>{
         req.user=Tuser;
         next();
     } catch (error) {
-        return res.status(400).json({msg:'Token not valid',error})
-    }
-    req.user = Tuser;
-    next();
-  } catch (error) {
-    return res.status(400).json({ msg: "Token not valid", error });
+        return res.status(400).json({msg:'Token not valid',error});
+    
   }
 };
 
