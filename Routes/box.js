@@ -62,7 +62,7 @@ router.put("/editbox/:_id", isAuth, isAdmin, async (req, res) => {
 
 // @route : http://localhost:5000/api/deletebox/:_id
 // delete box
-// private
+// private 
 
 router.delete("/deletebox/:_id", isAuth, isAdmin, async (req, res) => {
   const { _id } = req.params;

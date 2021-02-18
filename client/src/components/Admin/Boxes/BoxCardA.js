@@ -12,8 +12,7 @@ import { red } from '@material-ui/core/colors';
 import ShareIcon from '@material-ui/icons/Share';
 import Button from '@material-ui/core/Button';
 import {useDispatch} from 'react-redux'
-import {ADD,ADD2} from '../../redux/actions/shopAction'
-import {useSelector} from 'react-redux'
+import {deleteBox} from '../../../redux/actions/boxAction'
 
 
 
@@ -44,17 +43,11 @@ const useStyles = makeStyles((theme) => ({
 export default function BoxCard({el}) {
   const classes = useStyles();
   const dispatch=useDispatch();
-  const t = useSelector(state=> state.cardReducer.Shopp);
 
-const handleAdd = ()=>{
-  let num =1;
-  let y = t.find((s)=>s._id===el._id);
-   if (!y)  { 
-    el.num = num;
- (dispatch(ADD(el)))
-}else 
- (dispatch(ADD2(el)))
-};
+
+const handleDeleteBox = () => {
+    dispatch(deleteBox(el._id));
+  };
 
 
 
@@ -82,8 +75,8 @@ const handleAdd = ()=>{
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <Button onClick={handleAdd} >
-          ADD TO CARD
+        <Button onClick={handleDeleteBox} >
+          delete
         </Button>
         <IconButton aria-label="share">
           <ShareIcon />
@@ -95,4 +88,3 @@ const handleAdd = ()=>{
     </div>
   );
 }
-

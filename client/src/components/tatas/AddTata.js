@@ -17,7 +17,7 @@ const AddTata = () => {
   const addNewTata = (e) => {
     const newTata = { name, adress, phone, bio, speciality, goal };
     dispatch(addTata(newTata));
-    !errors ? history.push("/tata") : e.preventDefault();
+    !errors ? history.push("/managetata") : e.preventDefault();
   };
 
   const resetErrors = () => {
