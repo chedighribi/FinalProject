@@ -16,6 +16,9 @@ import { useEffect } from "react";
 import Myorder from "./components/my orders/myOrder";
 import AddTata from "./components/tatas/AddTata";
 import { Spinner } from "reactstrap";
+import BoxListA from './components/Admin/Boxes/BoxListA' 
+import TataListA from './components/Admin/Tatas/TataListA'
+import PrivateRoute from "./components/routes/PrivateRoute";
 
 function App() {
   const dispatch = useDispatch();
@@ -49,9 +52,11 @@ function App() {
         <Route path="/shopping" render={() => <Shopping />} />
         <Route path="/contactus" render={() => <ContactUs />} />
         <Route path="/login" render={() => <Login />} />
-        <Route path="/api/addbox" render={() => <AddBox />} />
-        <Route path="/myorders" render={() => <Myorder />} />
-        <Route path="/api/addtata" render={() => <AddTata />} />
+        <Route path="/addbox" render={() => <AddBox />} />
+        <PrivateRoute path="/myorders" component={Myorder} />
+        <Route path="/addtata" render={() => <AddTata />} />
+        <Route path="/managebox" render={() => <BoxListA />} />
+        <Route path="/managetata" render={() => <TataListA />} />
       </BrowserRouter>
     </div>
   );
