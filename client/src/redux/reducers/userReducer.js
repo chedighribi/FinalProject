@@ -14,6 +14,7 @@ import {
     isAuth: false,
     isLoading: true,
     msg: null,
+    admin:false
   };
   
   const authReducer = (state = initialState, { type, payload }) => {
@@ -26,9 +27,6 @@ import {
       case REGISTER_USER:
       case LOGIN_USER:
         localStorage.setItem('token', payload.token);
-        localStorage.setItem('name', payload.user.fullname);
-        localStorage.setItem('phone', payload.user.phone);
-
         return {
           ...state,
           isLoading: false,
@@ -42,13 +40,12 @@ import {
           ...state,
           isLoading: false,
           isAuth: true,
+          admin:payload.user.admin,
           ...payload,
         };
       case AUTH_ERRORS:
       case LOGOUT_USER:
         localStorage.removeItem('token');
-        localStorage.removeItem('name');
-        localStorage.removeItem('phone');
 
         return {
           ...state,
@@ -56,6 +53,7 @@ import {
           isAuth: false,
           user: null,
           isLoading: false,
+          admin:false,
         };
       default:
         return state;

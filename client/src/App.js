@@ -11,18 +11,21 @@ import ContactUs from "./components/ContactUs/ContactUs";
 import Login from "./components/RegisterAndLogin/Login";
 import AddBox from "./components/Boxes/AddBox";
 import { getAuthUser } from "./redux/actions/userAction";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import AddTata from "./components/tatas/AddTata";
-import MrAdmin from "./components/Admin/MrAdmin";
+
 
 function App() {
   const dispatch = useDispatch();
   const getUser = () => dispatch(getAuthUser());
-
   useEffect(() => {
     getUser();
   }, []);
+
+  const Admin = useSelector((state) => state.authReducer.admin)
+  console.log(Admin)
+
 
   return (
     <div className="App">
@@ -38,7 +41,6 @@ function App() {
         <Route path="/login" render={() => <Login />} />
         <Route path="/api/addbox" render={() => <AddBox />} />
         <Route path="/api/addtata" render={() => <AddTata />} />
-        <Route path="/mradmin" render={() => <MrAdmin />} />
       </BrowserRouter>
     </div>
   );
