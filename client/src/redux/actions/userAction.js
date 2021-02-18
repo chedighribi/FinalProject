@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 import {
   USER_LOADING,
   LOGIN_USER,
@@ -6,7 +6,7 @@ import {
   LOGOUT_USER,
   GET_AUTH_USER,
   AUTH_ERRORS,
-} from '../constantes/actionType';
+} from "../constantes/actionType";
 
 //Set the user loading
 const userLoading = () => (dispatch) => {
@@ -19,7 +19,7 @@ const userLoading = () => (dispatch) => {
 export const registerUser = (formData) => async (dispatch) => {
   dispatch(userLoading());
   try {
-    const res = await axios.post('/api/register', formData);
+    const res = await axios.post("/api/register", formData);
     dispatch({
       type: REGISTER_USER,
       payload: res.data, // { msg: 'User registred with success', user, token }
@@ -48,13 +48,11 @@ export const loginUser = (formData) => async (dispatch) => {
   dispatch(userLoading());
 
   try {
-    const res = await axios.post('/api/login', formData);
+    const res = await axios.post("/api/login", formData);
     dispatch({
       type: LOGIN_USER,
       payload: res.data, // { msg: 'Logged in with success', user, token }
-      
     });
-    
   } catch (error) {
     console.dir(error);
 
@@ -87,12 +85,14 @@ export const getAuthUser = () => async (dispatch) => {
     //headers
     /*const config = {
       headers: {
-        'auth-token': localStorage.getItem('token'),
+        "auth-token": localStorage.getItem("token"),
       },
+
     };        
     console.log(config) */
 
     const res = await axios.get('/api/user');
+
     dispatch({
       type: GET_AUTH_USER,
       payload: res.data, // {user: req.user}

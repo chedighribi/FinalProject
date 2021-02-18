@@ -43,9 +43,7 @@ export default function NavBar() {
               <Link className="linkNavbar" to="/contactus">
                 <Button color="inherit">Contact</Button>
               </Link>
-              <Link className="linkNavbar" to="/shopping">
-                <Button color="inherit">shop</Button>
-              </Link>
+              
             </div>
             <div className="LoReBtn">
               <div className="LoBtn">
@@ -102,6 +100,9 @@ export default function NavBar() {
             <Link className="linkNavbar" to="/shopping">
               <Button color="inherit">shop</Button>
             </Link>
+            <Link className="linkNavbar" to="/myorders">
+                <Button color="inherit">My order</Button>
+              </Link>
           </div>
           <div className="outBtn">
             <Link className="linkNavbar" to="/">

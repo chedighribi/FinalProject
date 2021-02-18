@@ -8,7 +8,7 @@ const lunchSchema = new schema({
     },
     name :{
         type : String,
-        required : true
+        
     },
     
     adress : {
@@ -16,7 +16,7 @@ const lunchSchema = new schema({
     },
     phone : {
         type : Number,
-        required : true
+        
     }
     ,
     special : {
