@@ -4,7 +4,7 @@ const registerRules = () => [
   body("fullname", "fullname is required").notEmpty(),
   body("email", "email is required").isEmail(),
   body("phone", "Put a valid phone number").isLength({ min: 8, max: 8 }),
-  body("adress", "adress is required").notEmpty().isLength({ min: 10 }),
+  body("adress", "adress is required").notEmpty(),
   body("password", "Password must contain 6 characters").isLength({
     min: 6,
     max: 20,
