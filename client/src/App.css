@@ -414,12 +414,110 @@ header h1 {
 ::selection {
   background: var(--primary-accent-color);
 }
-input,
-textarea,
-[contenteditable] {
-  width: 2px;
-  caret-color: var(--primary-accent-color);
-}
 .emailCnt {
   color: #f36846;
+}
+.form-control {
+  width: 30% !important;
+}
+
+/*tata*/
+.tataCard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.tataOne {
+  width: 340px;
+  height: 400px;
+}
+
+/*Admin*/
+
+.admin-panel {
+  width: 100%;
+  max-width: 900px;
+  margin: 50px auto;
+  overflow: hidden;
+  background-color: #fff;
+  position: relative;
+  background-color: #f1f1f1;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.slidebar {
+  width: 15%;
+  float: left;
+  background-color: #111;
+}
+.slidebar ul {
+  position: relative;
+  height: 100%;
+}
+
+.slidebar a {
+  color: #bbb;
+  text-decoration: none;
+}
+.slidebar li {
+  text-align: center;
+  padding: 0x 0px;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+li {
+  list-style-type: none;
+  margin: 0;
+  position: relative;
+  text-align: center;
+  color: #b3b3b3;
+}
+.slidebar i {
+  display: block;
+  text-align: center;
+  color: #b3b3b3;
+  font-size: 40px;
+  margin-bottom: 8px;
+}
+
+.slidebar ul a {
+  color: #b3b3b3;
+  text-decoration: none;
+  box-sizing: border-box;
+  display: block;
+  text-transform: capitalize;
+  padding: 20px;
+}
+.slidebar li:hover a,
+li#active {
+  background-color: #313131;
+}
+.slidebar li:hover i,
+li#active i {
+  color: #17bce8;
+}
+.slidebar li:focus i {
+  color: #17bce8;
+}
+
+.main {
+  float: left;
+  width: 85%;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+}
+
+.main h2 {
+  margin: 1em 30px;
+  color: #17bce8;
+  font-size: 20px;
+  font-weight: 600;
+  border-bottom: 1px solid #bbb;
+  padding: 0px 0px 20px 0px;
 }
