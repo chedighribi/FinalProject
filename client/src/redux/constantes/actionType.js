@@ -13,3 +13,4 @@ export const LOGOUT_USER = 'LOGOUT_USER';
 export const GET_AUTH_USER = 'GET_AUTH_USER';
 export const AUTH_ERRORS = 'AUTH_ERRORS';
 export const GET_TRAITEUR= 'GET_TRAITEUR';
+export const GET_MY_ORDER = 'GET_MY_ORDER';

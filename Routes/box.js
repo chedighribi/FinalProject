@@ -20,24 +20,24 @@ const boxes = require("../Models/boxModel");
 // add box
 // private
 
-router.post("/addbox",upload.single("BoxImage"),
-  async (req, res) => {
-    const { price, name, ingredient, madeby } = req.body;
-    try {
-      const newBox = new boxes({ price, name, ingredient, madeby });
-      const Box = await newBox.save();
-      res.json({ msg: "box saved", Box });
-    } catch (error) {
-      console.log(error);
-    }
+router.post("/addbox", upload.single("BoxImage"), async (req, res) => {
+  const { price, name, ingredient, madeby } = req.body;
+  try {
+    const newBox = new boxes({ price, name, ingredient, madeby });
+    const Box = await newBox.save();
+    res.json({ msg: "box saved", Box });
+  } catch (error) {
+    console.log(error);
   }
-);
+});
 
 // @route : http://localhost:5000/api/lunch
 // get boxes
 // public
 
-router.get("/lunch",isAuth , async (req, res) => {
+
+router.get("/lunch", isAuth, async (req, res) => {
+
   try {
     const box = await boxes.find();
     res.json({ msg: "boxes fetched", box });

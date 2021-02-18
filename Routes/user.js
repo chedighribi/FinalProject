@@ -99,32 +99,28 @@ router.get("/users", async (req, res) => {
 //@route GET api/user
 //@desc Get authentified user
 //@access Private
-router.get('/user', isAuth,(req, res) => {
+
+router.get("/user", isAuth, (req, res) => {
+
   res.status(200).send({ user: req.user });
 });
-
 
 // @route : http://localhost:5000/api/edituser/:_id
 // edit user profile
 // private
-router.put(
-  "/edituser/:_id",
-  registerRules(),
-  validator,
-  async (req, res) => {
-    const { _id } = req.params;
-    try {
-      const editedUser = await users.findByIdAndUpdate(
-        { _id },
-        { $set: req.body },
-        { new: true }
-      );
-      res.json({ msg: "profile updated", editedUser });
-    } catch (error) {
-      console.log(error);
-    }
+router.put("/edituser/:_id", registerRules(), validator, async (req, res) => {
+  const { _id } = req.params;
+  try {
+    const editedUser = await users.findByIdAndUpdate(
+      { _id },
+      { $set: req.body },
+      { new: true }
+    );
+    res.json({ msg: "profile updated", editedUser });
+  } catch (error) {
+    console.log(error);
   }
-);
+});
 
 // @route : http://localhost:5000/api/deleteuser/:_id
 // delete user
