@@ -14,6 +14,7 @@ import { getAuthUser } from "./redux/actions/userAction";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import AddTata from "./components/tatas/AddTata";
+import MrAdmin from "./components/Admin/MrAdmin";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ function App() {
         <Route path="/login" render={() => <Login />} />
         <Route path="/api/addbox" render={() => <AddBox />} />
         <Route path="/api/addtata" render={() => <AddTata />} />
+        <Route path="/mradmin" render={() => <MrAdmin />} />
       </BrowserRouter>
     </div>
   );
