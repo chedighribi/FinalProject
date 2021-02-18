@@ -30,6 +30,7 @@ const AddTata = () => {
 
   return (
     <div>
+      {errors && errors.map((el) => <Alert color="danger">{el.msg}</Alert>)}
       <form>
         <label>Nom et prénom</label>
         <input
@@ -75,7 +76,6 @@ const AddTata = () => {
           type="text"
         />
         <button onClick={addNewTata}>Submit</button>
-        {errors && errors.map((el) => <Alert color="danger">{el.msg}</Alert>)}
       </form>
     </div>
   );

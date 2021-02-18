@@ -6,6 +6,7 @@ import {
   LOGOUT_USER,
   GET_AUTH_USER,
   AUTH_ERRORS,
+  RESET_AUTH_ERRORS,
 } from "../constantes/actionType";
 
 //Set the user loading
@@ -17,7 +18,7 @@ const userLoading = () => (dispatch) => {
 
 // Register USer
 export const registerUser = (formData) => async (dispatch) => {
-  dispatch(userLoading());
+  // dispatch(userLoading());
   try {
     const res = await axios.post("/api/register", formData);
     dispatch({
@@ -30,22 +31,18 @@ export const registerUser = (formData) => async (dispatch) => {
     const { errors, msg } = error.response.data;
 
     if (Array.isArray(errors)) {
-      errors.forEach((err) => alert(err.msg));
+      dispatch({
+        type: AUTH_ERRORS,
+        payload: errors,
+      });
     }
     console.log(errors);
-    if (msg) {
-      alert(msg);
-    }
-
-    dispatch({
-      type: AUTH_ERRORS,
-    });
   }
 };
 
 // Login User
 export const loginUser = (formData) => async (dispatch) => {
-  dispatch(userLoading());
+  // dispatch(userLoading());
 
   try {
     const res = await axios.post("/api/login", formData);
@@ -59,16 +56,12 @@ export const loginUser = (formData) => async (dispatch) => {
     const { errors, msg } = error.response.data;
 
     if (Array.isArray(errors)) {
-      errors.forEach((err) => alert(err.msg));
+      dispatch({
+        type: AUTH_ERRORS,
+        payload: errors,
+      });
     }
     console.log(errors);
-    if (msg) {
-      alert(msg);
-    }
-
-    dispatch({
-      type: AUTH_ERRORS,
-    });
   }
 };
 
@@ -77,10 +70,11 @@ export const getAuthUser = () => async (dispatch) => {
   dispatch(userLoading());
   if (localStorage.token) {
     axios.defaults.headers.common["auth-token"] = localStorage.token;
-  // localStorage.setItem('token', token);
-    } else {    delete axios.defaults.headers.common["auth-token"];
-  // localStorage.removeItem("token");0  }
-   }
+    // localStorage.setItem('token', token);
+  } else {
+    delete axios.defaults.headers.common["auth-token"];
+    // localStorage.removeItem("token");0  }
+  }
   try {
     //headers
     /*const config = {
@@ -91,7 +85,7 @@ export const getAuthUser = () => async (dispatch) => {
     };        
     console.log(config) */
 
-    const res = await axios.get('/api/user');
+    const res = await axios.get("/api/user");
 
     dispatch({
       type: GET_AUTH_USER,
@@ -108,5 +102,11 @@ export const getAuthUser = () => async (dispatch) => {
 export const logout = () => (dispatch) => {
   dispatch({
     type: LOGOUT_USER,
+  });
+};
+
+export const resetAuthErrors = () => (dispatch) => {
+  dispatch({
+    type: RESET_AUTH_ERRORS,
   });
 };
