@@ -12,7 +12,7 @@ const Myorder =()=>{
     const t = useSelector(state => state.myorderReducer.myorder);
     return (
         <div>
-            {t.map((el)=> <h3>{el.adress}</h3>) }
+            {t && t.map((el)=> <h3>{el.adress}</h3>) }
         </div>
     )
 }

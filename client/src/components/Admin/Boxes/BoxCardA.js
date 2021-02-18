@@ -42,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function BoxCard({el}) {
   const classes = useStyles();
+  
   const dispatch=useDispatch();
 
 
@@ -56,7 +57,7 @@ const handleDeleteBox = () => {
     <Card className={classes.root}>
       <CardHeader
         avatar={
-          <Avatar aria-label="recipe" className={classes.avatar} style={{backgroundColor:"#719a7c"}}>
+          <Avatar aria-label="recipe" className={classes.avatar} style={{backgroundColor:"#f36846", color:'beige'}}>
             {el.price}
           </Avatar>
         }
@@ -78,9 +79,6 @@ const handleDeleteBox = () => {
         <Button onClick={handleDeleteBox} >
           delete
         </Button>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
         
       </CardActions>
        
