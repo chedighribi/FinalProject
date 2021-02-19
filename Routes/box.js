@@ -21,9 +21,9 @@ const boxes = require("../Models/boxModel");
 // private
 
 router.post("/addbox", upload.single("BoxImage"), async (req, res) => {
-  const { price, name, ingredient, madeby } = req.body;
+  const { price, name, ingredient, madeby ,img} = req.body;
   try {
-    const newBox = new boxes({ price, name, ingredient, madeby });
+    const newBox = new boxes({ price, name, ingredient, madeby ,img});
     const Box = await newBox.save();
     res.json({ msg: "box saved", Box });
   } catch (error) {

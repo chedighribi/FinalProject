@@ -46,7 +46,7 @@ export default function BoxCard({ el }) {
     console.log(el._id);
     dispatch(deleteBox(el._id));
   };
-
+console.log(el.img)
   return (
     <div className="tataOne">
       <Card className={classes.root}>
@@ -63,7 +63,10 @@ export default function BoxCard({ el }) {
           title={el.name}
           subheader={el.madeby}
         />
-        <CardMedia className={classes.media} image="" title="Paella dish" />
+      <CardMedia style={{backgroundImage : `url(${el.img})`}}
+        className={classes.media}
+        imageUrl='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg'
+      />
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
             {el.ingredient}

@@ -18,6 +18,9 @@ const boxSchema = new schema({
         type : String,
         required : true,
     },
+    img : {
+        type : String,
+    }
 
     })
 module.exports = box = mongoose.model("box",boxSchema);

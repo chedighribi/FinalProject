@@ -77,11 +77,10 @@ export default function TataCard({ el }) {
           title={el.name}
           subheader={el.speciality}
         />
-        <CardMedia
-          className={classes.media}
-          image="/static/images/cards/paella.jpg"
-          title="Paella dish"
-        />
+      <CardMedia style={{backgroundImage : `url(${el.img})`}}
+        className={classes.media}
+        imageUrl='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg'
+      />
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
             {el.ingredient}

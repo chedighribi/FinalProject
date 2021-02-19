@@ -71,10 +71,9 @@ const handleAdd = ()=>{
         title={el.name}
         subheader={el.madeby}
       />
-      <CardMedia
+      <CardMedia style={{backgroundImage : `url(${el.img})`}}
         className={classes.media}
-        image=""
-        title="Paella dish"
+        imageUrl='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg'
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
