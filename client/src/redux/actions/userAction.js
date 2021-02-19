@@ -50,11 +50,13 @@ export const loginUser = (formData) => async (dispatch) => {
       type: LOGIN_USER,
       payload: res.data, // { msg: 'Logged in with success', user, token }
     });
+    dispatch({
+      type: RESET_AUTH_ERRORS,
+    });
   } catch (error) {
     console.dir(error);
 
-    const { errors, msg } = error.response.data;
-
+    const { errors } = error.response.data;
 
     if (Array.isArray(errors)) {
       dispatch({

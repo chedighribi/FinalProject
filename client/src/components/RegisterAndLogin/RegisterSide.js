@@ -11,7 +11,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { registerUser, resetAuthErrors } from "../../redux/actions/userAction";
-import { useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { Alert } from "reactstrap";
 
 const useStyles = makeStyles((theme) => ({
@@ -57,13 +57,13 @@ export default function RegisterSide() {
   const [adress, setNewAdress] = useState("");
   const [password, setNewPassword] = useState("");
   const dispatch = useDispatch();
-  const history = useHistory();
   const errors = useSelector((state) => state.authReducer.errors);
+  const isAuth = useSelector((state) => state.authReducer.isAuth);
 
   const handleRegister = (e) => {
     const user = { fullname, email, phone, adress, password };
     dispatch(registerUser(user));
-    !errors ? history.push("/") : e.preventDefault();
+    e.preventDefault();
   };
 
   const resetErrors = () => {
@@ -76,6 +76,7 @@ export default function RegisterSide() {
 
   return (
     <Grid container component="main" className={classes.root}>
+      {isAuth && <Redirect to="/" />}
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
