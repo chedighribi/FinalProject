@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addBox } from "../../redux/actions/boxAction";
+import { useHistory } from "react-router-dom";
 
 const AddBox = () => {
   const [price, setPrice] = useState(0);
-  const [img, setImg] = useState('');
+  const [img, setImg] = useState("");
   const [name, setName] = useState("");
   const [ingredient, setIngredient] = useState("");
   const [madeby, setMadeby] = useState("");
   const dispatch = useDispatch();
-  const addNewBox = (e) => {
-    e.preventDefault();
-    dispatch(addBox({ price, name, ingredient, madeby,img }));
+  const history = useHistory();
+  const addNewBox = () => {
+    dispatch(addBox({ price, name, ingredient, madeby, img }));
+    history.push("/managebox");
   };
   return (
     <div>

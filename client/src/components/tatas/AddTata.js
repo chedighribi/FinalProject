@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addTata, resetTataErrors } from "../../redux/actions/tataAction";
-import { useHistory } from "react-router-dom";
-import { Alert } from "reactstrap";
+import { Redirect } from "react-router-dom";
+import { Alert, FormGroup, Label, Input, Button } from "reactstrap";
 
 const AddTata = () => {
   const [name, setName] = useState("");
@@ -12,13 +12,14 @@ const AddTata = () => {
   const [speciality, setSpeciality] = useState("");
   const [goal, setGoal] = useState("");
   const [img, setImg] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const dispatch = useDispatch();
-  const history = useHistory();
   const errors = useSelector((state) => state.tataReducer.errors);
   const addNewTata = (e) => {
-    const newTata = { name, adress, phone, bio, speciality, goal,img };
+    const newTata = { name, adress, phone, bio, speciality, goal, img };
     dispatch(addTata(newTata));
-    !errors ? history.push("/managetata") : e.preventDefault();
+    e.preventDefault();
+    setIsSubmitted(true);
   };
 
   const resetErrors = () => {
@@ -32,59 +33,74 @@ const AddTata = () => {
   return (
     <div>
       {errors && errors.map((el) => <Alert color="danger">{el.msg}</Alert>)}
-      <form>
-        <label>Nom et prénom</label>
-        <input
-          style={{ width: "150px" }}
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          type="text"
-        />
-        <label>Adresse</label>
-        <input
-          style={{ width: "150px" }}
-          value={adress}
-          onChange={(e) => setAdress(e.target.value)}
-          type="text"
-          
-        />
-        <label>Photo</label>
-        <input
-          style={{ width: "150px" }}
-          value={img}
-          onChange={(e) => setImg(e.target.value)}
-          type="text"
-          
-        />
-        <label>Numero de téléphone</label>
-        <input
-          style={{ width: "150px" }}
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          type="number"
-        />
-        <label>Biographie</label>
-        <input
-          style={{ width: "150px" }}
-          value={bio}
-          onChange={(e) => setBio(e.target.value)}
-          type="text"
-        />
-        <label>Specialité</label>
-        <input
-          style={{ width: "150px" }}
-          value={speciality}
-          onChange={(e) => setSpeciality(e.target.value)}
-          type="text"
-        />
-        <label>Objectif</label>
-        <input
-          style={{ width: "150px" }}
-          value={goal}
-          onChange={(e) => setGoal(e.target.value)}
-          type="text"
-        />
-        <button onClick={addNewTata}>Submit</button>
+      {isSubmitted && !errors && <Redirect to="/managetata" />}
+      <form
+      // style={{
+      //   display: "flex",
+      //   flexDirection: "column",
+      //   justifyContent: "center",
+      //   alignContent: "center",
+      // }}
+      >
+        <FormGroup>
+          <Label>Nom et prénom</Label>
+          <Input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            type="text"
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label>Adresse</Label>
+          <Input
+            value={adress}
+            onChange={(e) => setAdress(e.target.value)}
+            type="text"
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label>Photo</Label>
+          <Input
+            value={img}
+            onChange={(e) => setImg(e.target.value)}
+            type="text"
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label>Numero de téléphone</Label>
+          <Input
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            type="number"
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label>Biographie</Label>
+          <Input
+            value={bio}
+            onChange={(e) => setBio(e.target.value)}
+            type="text"
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label>Specialité</Label>
+          <Input
+            value={speciality}
+            onChange={(e) => setSpeciality(e.target.value)}
+            type="text"
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label>Objectif</Label>
+          <Input
+            value={goal}
+            onChange={(e) => setGoal(e.target.value)}
+            type="text"
+          />
+        </FormGroup>
+        <Button color="info" onClick={addNewTata}>
+          Submit
+        </Button>
       </form>
     </div>
   );
