@@ -10,7 +10,7 @@ import Paper from '@material-ui/core/Paper';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: theme.palette.warning.light    ,
     color: theme.palette.common.white,
   },
   body: {
@@ -30,13 +30,7 @@ function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
 }
 
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
+
 
 const useStyles = makeStyles({
   table: {
@@ -46,29 +40,30 @@ const useStyles = makeStyles({
 
 export default function OrdersTab({el}) {
   const classes = useStyles();
+    const orders = el.order
 
   return (
-    <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="customized table">
+    <TableContainer component={Paper} className='tableList'>
+      <Table className={classes.table} className='tableOne' aria-label="customized table">
         <TableHead>
-          <TableRow>
+          <TableRow style={{color:'beige'}}>
             <StyledTableCell>{el.time}</StyledTableCell>
-            <StyledTableCell align="right">{el.adress}</StyledTableCell>
-            <StyledTableCell align="right">{el.special}</StyledTableCell>
-            <StyledTableCell align="right">{el.totalPrice}</StyledTableCell>
-            <StyledTableCell align="right">{el.phone}</StyledTableCell>
+            <StyledTableCell align="right">Made by</StyledTableCell>
+            <StyledTableCell align="right">Total Price: {el.totalPrice}</StyledTableCell>
+            <StyledTableCell align="right">Qnt</StyledTableCell>
+            <StyledTableCell align="right">Special request</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <StyledTableRow key={row.name}>
+          {orders.map((order) => (
+            <StyledTableRow key={order.name}>
               <StyledTableCell component="th" scope="row">
-                {row.name}
+                {order.name}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.calories}</StyledTableCell>
-              <StyledTableCell align="right">{row.fat}</StyledTableCell>
-              <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-              <StyledTableCell align="right">{row.protein}</StyledTableCell>
+              <StyledTableCell align="right">{order.madeby}</StyledTableCell>
+              <StyledTableCell align="right">{order.price}</StyledTableCell>
+              <StyledTableCell align="right">{order.num}</StyledTableCell>
+              <StyledTableCell align="right">{el.special}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
