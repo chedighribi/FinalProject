@@ -56,10 +56,11 @@ export default function TataCard({ el }) {
   };
 
   return (
+    <div className='tataOne'>
     <Card className={classes.root}>
       <CardHeader
         avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
+          <Avatar aria-label="recipe" className={classes.avatar} style={{ backgroundColor: "#719a7c" }}>
             {el.name[0]}
           </Avatar>
         }
@@ -133,5 +134,6 @@ export default function TataCard({ el }) {
         </CardContent>
       </Collapse>
     </Card>
+    </div>
   );
 }

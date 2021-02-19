@@ -17,7 +17,7 @@ const boxSchema = new schema({
     madeby : {
         type : String,
         required : true,
-    }
+    },
 
-})
+    })
 module.exports = box = mongoose.model("box",boxSchema);
