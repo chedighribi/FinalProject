@@ -27,7 +27,7 @@ router.post(
   addTataRules(),
   validator,
   async (req, res) => {
-    const { name, adress, phone, bio, speciality, goal } = req.body;
+    const { name, adress, phone, bio, speciality, goal,img } = req.body;
     try {
       const newTata = new tata({
         name,
@@ -36,6 +36,7 @@ router.post(
         bio,
         speciality,
         goal,
+        img
       });
       const tatta = await newTata.save();
       res.json({ msg: "tata saved", tatta });

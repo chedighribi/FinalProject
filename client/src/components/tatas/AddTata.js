@@ -11,11 +11,12 @@ const AddTata = () => {
   const [bio, setBio] = useState("");
   const [speciality, setSpeciality] = useState("");
   const [goal, setGoal] = useState("");
+  const [img, setImg] = useState("");
   const dispatch = useDispatch();
   const history = useHistory();
   const errors = useSelector((state) => state.tataReducer.errors);
   const addNewTata = (e) => {
-    const newTata = { name, adress, phone, bio, speciality, goal };
+    const newTata = { name, adress, phone, bio, speciality, goal,img };
     dispatch(addTata(newTata));
     !errors ? history.push("/managetata") : e.preventDefault();
   };
@@ -45,7 +46,15 @@ const AddTata = () => {
           value={adress}
           onChange={(e) => setAdress(e.target.value)}
           type="text"
-          A
+          
+        />
+        <label>Photo</label>
+        <input
+          style={{ width: "150px" }}
+          value={img}
+          onChange={(e) => setImg(e.target.value)}
+          type="text"
+          
         />
         <label>Numero de téléphone</label>
         <input

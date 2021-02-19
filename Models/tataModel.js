@@ -22,6 +22,9 @@ const tataSchema = new schema({
     },
     goal : {
         type : String
+    },
+    img : {
+        type : String
     }
 })
 module.exports = tata = mongoose.model("tata",tataSchema);
