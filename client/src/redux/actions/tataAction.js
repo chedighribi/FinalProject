@@ -13,23 +13,23 @@ export const getTata = () => (dispatch) => {
 };
 
 export const addTata = (newTata) => (dispatch) => {
-  axios
-    .post("/api/tataplus", newTata)
-    .then((res) => {
-      dispatch(getTata());
-      console.log(res);
-    })
-    .catch((error) => {
-      console.dir(error);
-      const { errors} = error.response.data;
-      if (Array.isArray(errors)) {
-        dispatch({
-          type: TATA_ERRORS,
-          payload: errors,
-        });
-      }
-      console.log(errors);
-    });
+  axios.post("/api/tataplus", newTata).then((res) => {
+    dispatch(getTata());
+    console.log(res);
+  });
+  dispatch({
+    type: RESET_TATA_ERRORS,
+  }).catch((error) => {
+    console.dir(error);
+    const { errors } = error.response.data;
+    if (Array.isArray(errors)) {
+      dispatch({
+        type: TATA_ERRORS,
+        payload: errors,
+      });
+    }
+    console.log(errors);
+  });
 };
 
 export const editTata = (id, editedTata) => (dispatch) => {

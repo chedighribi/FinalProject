@@ -19,7 +19,9 @@ export default function NavBar() {
   };
 
   const Admin = useSelector((state) => state.authReducer.admin)
-  console.log(Admin)
+  const user = useSelector((state) => state.authReducer.user)
+  console.log(user)
+ 
 
 
 
@@ -35,6 +37,9 @@ export default function NavBar() {
               </Link>
             </Typography>
             {/* <BrowserRouter> */}
+            <div>
+              {user.fullname}
+            </div>
             <div>
               <Link className="linkNavbar" to="/managetata">
                 <Button color="inherit">Tatta</Button>
