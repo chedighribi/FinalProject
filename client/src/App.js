@@ -16,13 +16,16 @@ import { useEffect } from "react";
 import Myorder from "./components/my orders/myOrder";
 import AddTata from "./components/tatas/AddTata";
 import { Spinner } from "reactstrap";
-import BoxListA from './components/Admin/Boxes/BoxListA' 
-import TataListA from './components/Admin/Tatas/TataListA'
+import BoxListA from "./components/Admin/Boxes/BoxListA";
+import TataListA from "./components/Admin/Tatas/TataListA";
 import PrivateRoute from "./components/routes/PrivateRoute";
+import AdminRoute from "./components/routes/AdminRoute";
 import TraiteurReq from "./components/Admin/Traiteur/TraiteurReq";
 import AllContacts from "./components/Admin/Contactus/AllContacts";
+
 import Allorder from './components/Admin/orders/Allorders'
 import Allusers from './components/Admin/users/Allusers'
+
 
 function App() {
   const dispatch = useDispatch();
@@ -56,16 +59,15 @@ function App() {
         <Route path="/shopping" render={() => <Shopping />} />
         <Route path="/contactus" render={() => <ContactUs />} />
         <Route path="/login" render={() => <Login />} />
-        <Route path="/addbox" render={() => <AddBox />} />
+        <AdminRoute path="/addbox" render={() => <AddBox />} />
         <PrivateRoute path="/myorders" component={Myorder} />
-        <Route path="/addtata" render={() => <AddTata />} />
-        <Route path="/managebox" render={() => <BoxListA />} />
-        <Route path="/managetata" render={() => <TataListA />} />
-        <Route path="/traiteurrequest" render={() => <TraiteurReq />} />
-        <Route path="/allcontactus" render={() => <AllContacts />} />
-        <Route path="/orders" render={() => <Allorder />} />
-        <Route path="/users" render={() => <Allusers />} />
-
+        <AdminRoute path="/addtata" render={() => <AddTata />} />
+        <AdminRoute path="/managebox" render={() => <BoxListA />} />
+        <AdminRoute path="/managetata" render={() => <TataListA />} />
+        <AdminRoute path="/traiteurrequest" render={() => <TraiteurReq />} />
+        <AdminRoute path="/allcontactus" render={() => <AllContacts />} />
+        <AdminRoute path="/orders" render={() => <Allorder />} />
+        <AdminRoute path="/users" render={() => <Allusers />} />
 
       </BrowserRouter>
     </div>

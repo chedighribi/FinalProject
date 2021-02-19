@@ -9,7 +9,6 @@ const Editbox = ({ el }) => {
   const [editedingredient, setEditedingredient] = useState(el.ingredient);
   const [editedprice, setEditedprice] = useState(el.price);
   const [editedmadeby, setEditedmadeby] = useState(el.madeby);
- 
 
   const dispatch = useDispatch();
 
@@ -26,8 +25,7 @@ const Editbox = ({ el }) => {
       name: editedName,
       ingredient: editedingredient,
       price: editedprice,
-      madeby: editedmadeby
-      
+      madeby: editedmadeby,
     };
     dispatch(editBox(el._id, editedbox));
     toggle();
@@ -35,8 +33,8 @@ const Editbox = ({ el }) => {
 
   return (
     <div>
-      <Button color="danger" onClick={toggle}>
-        Modifier
+      <Button style={{ width: "100px" }} color="danger" onClick={toggle}>
+        Edit
       </Button>
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>Modal title</ModalHeader>
@@ -47,20 +45,23 @@ const Editbox = ({ el }) => {
               value={editedName}
               onChange={(e) => setEditedName(e.target.value)}
               type="text"
-            /><br />
+            />
+            <br />
             <label>ingredient</label>
             <input
               value={editedingredient}
               onChange={(e) => setEditedingredient(e.target.value)}
               type="text"
               A
-            /><br />
+            />
+            <br />
             <label>Price</label>
             <input
               value={editedprice}
               onChange={(e) => setEditedprice(e.target.value)}
               type="number"
-            /><br />
+            />
+            <br />
             <label>Made By</label>
             <input
               value={editedmadeby}

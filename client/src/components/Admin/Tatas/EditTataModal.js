@@ -39,8 +39,8 @@ const EditTataModal = ({ el }) => {
 
   return (
     <div>
-      <Button color="danger" onClick={toggle}>
-        Modifier
+      <Button style={{ width: "100px" }} color="info" onClick={toggle}>
+        Edit
       </Button>
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>Modal title</ModalHeader>
