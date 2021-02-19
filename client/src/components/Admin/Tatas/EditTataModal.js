@@ -39,7 +39,7 @@ const EditTataModal = ({ el }) => {
 
   return (
     <div>
-      <Button style={{ width: "100px" }} color="info" onClick={toggle}>
+      <Button style={{ width: "100px",backgroundColor:'beige', color:'#f36846',BorderColor:'#f36846' }} onClick={toggle}>
         Edit
       </Button>
       <Modal isOpen={modal} toggle={toggle}>
