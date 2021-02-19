@@ -89,7 +89,7 @@ export default function TataCard({ el }) {
         <div style={{ display: "flex", justifyContent: "space-around" }}>
           <Button
             color="danger"
-            style={{ width: "100px" }}
+            style={{ width: "100px" , backgroundColor:'beige', color:'#f36846',BorderColor:'#f36846'}}
             onClick={handleDeleteTata}
           >
             Delete
