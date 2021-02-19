@@ -22,7 +22,10 @@ import PrivateRoute from "./components/routes/PrivateRoute";
 import AdminRoute from "./components/routes/AdminRoute";
 import TraiteurReq from "./components/Admin/Traiteur/TraiteurReq";
 import AllContacts from "./components/Admin/Contactus/AllContacts";
-import Allorder from "./components/Admin/orders/Allorders";
+
+import Allorder from './components/Admin/orders/Allorders'
+import Allusers from './components/Admin/users/Allusers'
+
 
 function App() {
   const dispatch = useDispatch();
@@ -64,6 +67,8 @@ function App() {
         <AdminRoute path="/traiteurrequest" render={() => <TraiteurReq />} />
         <AdminRoute path="/allcontactus" render={() => <AllContacts />} />
         <AdminRoute path="/orders" render={() => <Allorder />} />
+        <AdminRoute path="/users" render={() => <Allusers />} />
+
       </BrowserRouter>
     </div>
   );
