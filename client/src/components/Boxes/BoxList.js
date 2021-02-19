@@ -23,7 +23,7 @@ const BoxList = () => {
   return (
     <div>
         <Input type='text' placeholder='filter by name' onChange={(e)=>setFilter(e.target.value)} value={filter} width='50px' />
-      <div className='tataCard'>
+      <div className='tataCard' style={{display:'flex'}}>
       {boxs && boxs.filter(el => ((el.name).toUpperCase()).includes((filter).toUpperCase())).map((el) => <BoxCard el={el} key={el._id} />)}
       </div>
       <Link to="/api/addbox">

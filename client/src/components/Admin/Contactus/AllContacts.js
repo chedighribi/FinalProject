@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTraiteur } from "../../../redux/actions/traiteurAction";
+import { getContactUs } from "../../../redux/actions/contactUsAction";
 import ContactsCom from "./ContactsCom";
 
 const AllContacts = () => {
@@ -8,7 +8,7 @@ const AllContacts = () => {
 
 
     useEffect(() => {
-      dispatch(getTraiteur());
+      dispatch(getContactUs());
     }, []);
     const Contacts = useSelector((state) => state.ContactUsReducer.contactUs.allContactUs);
 

@@ -481,3 +481,10 @@ header h1 {
   flex-wrap: wrap;
   justify-content: space-around;
 }
+
+/*allcontacts*/
+.listContacts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}

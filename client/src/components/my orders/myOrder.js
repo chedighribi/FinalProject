@@ -1,6 +1,7 @@
 import React,{useEffect} from 'react';
 import {useSelector,useDispatch} from 'react-redux';
 import {getMyOrder} from '../../redux/actions/myorderAction'
+import OrdersTab from './ordersTab';
 
 
 const Myorder =()=>{
@@ -12,7 +13,7 @@ const Myorder =()=>{
     const t = useSelector(state => state.myorderReducer.myorder);
     return (
         <div>
-            {t && t.map((el)=> <h3>{el.adress}</h3>) }
+            {t && t.map((el)=> <OrdersTab el={el}/>) }
         </div>
     )
 }
