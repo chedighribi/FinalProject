@@ -3,14 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { getBox } from "../../../redux/actions/boxAction";
 import BoxCardA from "./BoxCardA";
 import { Link } from "react-router-dom";
-import {useState} from 'react'
-import {Input} from 'reactstrap';
-
-
+import { useState } from "react";
+import { Input, Button } from "reactstrap";
 
 const BoxListA = () => {
   const dispatch = useDispatch();
-
 
   useEffect(() => {
     dispatch(getBox());
@@ -21,13 +18,37 @@ const BoxListA = () => {
 
   return (
     <div>
-        <Input type='text' placeholder='filter by name' onChange={(e)=>setFilter(e.target.value)} value={filter} width='50px' />
-      <div className='tataCard'>
-      {boxs && boxs.filter(el => ((el.name).toUpperCase()).includes((filter).toUpperCase())).map((el) => <BoxCardA el={el} key={el._id} />)}
-      </div>
+      <Input
+        bsSize="lg"
+        type="text"
+        placeholder="filter by name"
+        onChange={(e) => setFilter(e.target.value)}
+        value={filter}
+        style={{
+          marginTop: "20px",
+          marginBottom: "30px",
+          marginRight: "50%",
+          marginLeft: "35%",
+        }}
+      />
       <Link to="/addbox">
-        <button>add box</button>
+        <Button
+          style={{ marginBottom: "30px" }}
+          color="primary"
+          size="lg"
+          block
+        >
+          add box
+        </Button>
       </Link>
+      <div className="tataCard">
+        {boxs &&
+          boxs
+            .filter((el) =>
+              el.name.toUpperCase().includes(filter.toUpperCase())
+            )
+            .map((el) => <BoxCardA el={el} key={el._id} />)}
+      </div>
     </div>
   );
 };
