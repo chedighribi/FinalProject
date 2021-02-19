@@ -501,3 +501,11 @@ header h1 {
   margin: 20px !important;
   width: 90% !important;
 }
+
+.MuiStepIcon-root.MuiStepIcon-active {
+  color: #f36846 !important;
+}
+
+.MuiStepIcon-root.MuiStepIcon-completed {
+  color: #719a7c !important;
+}

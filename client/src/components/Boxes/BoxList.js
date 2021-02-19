@@ -26,9 +26,6 @@ const BoxList = () => {
       <div className='tataCard' style={{display:'flex'}}>
       {boxs && boxs.filter(el => ((el.name).toUpperCase()).includes((filter).toUpperCase())).map((el) => <BoxCard el={el} key={el._id} />)}
       </div>
-      <Link to="/api/addbox">
-        <button>add box</button>
-      </Link>
     </div>
   );
 };
