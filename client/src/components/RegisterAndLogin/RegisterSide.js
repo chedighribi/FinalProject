@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -10,8 +10,9 @@ import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import { registerUser } from "../../redux/actions/userAction";
+import { registerUser, resetAuthErrors } from "../../redux/actions/userAction";
 import { useHistory } from "react-router-dom";
+import { Alert } from "reactstrap";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -57,12 +58,21 @@ export default function RegisterSide() {
   const [password, setNewPassword] = useState("");
   const dispatch = useDispatch();
   const history = useHistory();
+  const errors = useSelector((state) => state.authReducer.errors);
 
-  const handleRegister = () => {
+  const handleRegister = (e) => {
     const user = { fullname, email, phone, adress, password };
     dispatch(registerUser(user));
-    history.push("/");
+    !errors ? history.push("/") : e.preventDefault();
   };
+
+  const resetErrors = () => {
+    dispatch(resetAuthErrors());
+  };
+
+  useEffect(() => {
+    resetErrors();
+  }, []);
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -142,7 +152,8 @@ export default function RegisterSide() {
               value={password}
               onChange={(e) => setNewPassword(e.target.value)}
             />
-
+            {errors &&
+              errors.map((el) => <Alert color="danger">{el.msg}</Alert>)}
             <Button
               fullWidth
               variant="contained"
@@ -153,7 +164,6 @@ export default function RegisterSide() {
             >
               Register
             </Button>
-
             <Box mt={5}>Come Chez Tata</Box>
           </form>
         </div>

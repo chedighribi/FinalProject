@@ -4,6 +4,7 @@ import Tab from './Tab'
 import {useState} from 'react'
 import {addlunch} from '../../redux/actions/luchAction'
 import {useDispatch} from 'react-redux'
+import {RESET} from '../../redux/actions/shopAction'
 
 const Shopping=()=>{
     const  user = { 'name': localStorage.getItem('name'),
@@ -19,7 +20,9 @@ const Shopping=()=>{
     return sum }
     const dispatch = useDispatch()
     const add=()=>{
-        dispatch(addlunch({order:t,name:user.name, phone:user.phone ,totalPrice:total(t), special}))
+        dispatch(addlunch({order:t,name:user.name, phone:user.phone ,totalPrice:total(t), special}));
+        setSpecial('');
+        dispatch(RESET())
     }
  
     return(

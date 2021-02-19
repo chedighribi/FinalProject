@@ -21,6 +21,7 @@ import TataListA from './components/Admin/Tatas/TataListA'
 import PrivateRoute from "./components/routes/PrivateRoute";
 import TraiteurReq from "./components/Admin/Traiteur/TraiteurReq";
 import AllContacts from "./components/Admin/Contactus/AllContacts";
+import Allorder from './components/Admin/orders/Allorders'
 
 function App() {
   const dispatch = useDispatch();
@@ -61,6 +62,7 @@ function App() {
         <Route path="/managetata" render={() => <TataListA />} />
         <Route path="/traiteurrequest" render={() => <TraiteurReq />} />
         <Route path="/allcontactus" render={() => <AllContacts />} />
+        <Route path="/orders" render={() => <Allorder />} />
 
 
       </BrowserRouter>
