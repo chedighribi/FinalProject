@@ -51,6 +51,9 @@ export default function NavBar() {
               <Link className="linkNavbar" to="/orders">
                 <Button color="inherit">Orders</Button>
               </Link>
+              <Link className="linkNavbar" to="/users">
+                <Button color="inherit">users</Button>
+              </Link>
             </div>
             <div className="outBtn">
               <Link className="linkNavbar" to="/">
