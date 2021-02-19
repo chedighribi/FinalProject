@@ -5,6 +5,9 @@ import {useState} from 'react'
 import {addlunch} from '../../redux/actions/luchAction'
 import {useDispatch} from 'react-redux'
 import {RESET} from '../../redux/actions/shopAction'
+import { Table } from 'reactstrap';
+
+
 
 const Shopping=()=>{
     const  user = { 'name': localStorage.getItem('name'),
@@ -26,9 +29,16 @@ const Shopping=()=>{
     }
  
     return(
-        <div>
+        <div style={{alignContent:'center'}}>
             {t.map(el=> <Tab el={el} /> )}
-            <h4>total = {total(t)} .DT</h4><br />
+            <Table style={{ backgroundColor: "#f9e4b7" }}>
+      <thead>
+        <tr>
+          <th>Total {total(t)} .DT</th>
+        </tr>
+      </thead>
+    </Table>
+
             <input type='text' placeholder='spécial ?' onChange={(e)=>setSpecial(e.target.value)} value={special} />
             <button onClick={add}>Submit</button>
         </div>

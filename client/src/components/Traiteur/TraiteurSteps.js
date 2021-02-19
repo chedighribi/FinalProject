@@ -224,24 +224,26 @@ export default function TraiteurSteps() {
                     disabled={activeStep === 0}
                     onClick={handleBack}
                     className={classes.button}
+                    style={{backgroundColor:'beige'}}
                   >
                     Back
                   </Button>
                   {activeStep === steps.length - 1 ? (
                     <Button
                       variant="contained"
-                      color="primary"
                       onClick={handleTraiteur}
                       className={classes.button}
+                      style={{backgroundColor:'#f36846'}}
                     >
                       Finish
                     </Button>
                   ) : (
                     <Button
                       variant="contained"
-                      color="primary"
+                      color="beige"
                       onClick={handleNext}
                       className={classes.button}
+                      style={{backgroundColor:'beige'}}
                     >
                       Next
                     </Button>
