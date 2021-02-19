@@ -20,14 +20,19 @@ export const addBox = (newBox) => async (dispatch) => {
 };
 
 
-export const deleteBox = ({ id }) => (dispatch) => {
+export const deleteBox = ( _id ) => (dispatch) => {
   axios
-    .delete(`/api/deletebox/${id}`)
-    .then((res) =>
-      dispatch(
-        getBox()
-    )
-    )
+    .delete(`/api/deletebox/${_id}`)
+    .then((res) => dispatch(getBox()))
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const editBox = ( _id,boxedited ) => (dispatch) => {
+  axios
+    .put(`/api/editbox/${_id}`,boxedited)
+    .then((res) => dispatch(getBox()))
     .catch((err) => {
       console.log(err);
     });

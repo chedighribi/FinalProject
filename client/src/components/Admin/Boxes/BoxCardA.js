@@ -6,13 +6,13 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
-import ShareIcon from '@material-ui/icons/Share';
 import Button from '@material-ui/core/Button';
 import {useDispatch} from 'react-redux'
-import {deleteBox} from '../../../redux/actions/boxAction'
+import {deleteBox} from '../../../redux/actions/boxAction';
+import {editBox} from '../../../redux/actions/boxAction'
+import EditBox from './Editbox'
 
 
 
@@ -47,8 +47,11 @@ export default function BoxCard({el}) {
 
 
 const handleDeleteBox = () => {
+  console.log(el._id)
     dispatch(deleteBox(el._id));
   };
+
+  
 
 
 
@@ -79,6 +82,7 @@ const handleDeleteBox = () => {
         <Button onClick={handleDeleteBox} >
           delete
         </Button>
+        <EditBox el={el} />
         
       </CardActions>
        
