@@ -36,7 +36,7 @@ router.post("/addbox", upload.single("BoxImage"), async (req, res) => {
 // public
 
 
-router.get("/lunch", isAuth, async (req, res) => {
+router.get("/lunch",  async (req, res) => {
 
   try {
     const box = await boxes.find();
@@ -65,7 +65,7 @@ router.put("/editbox/:_id", isAuth, isAdmin, async (req, res) => {
 // private 
 
 router.delete("/deletebox/:_id", isAuth, isAdmin, async (req, res) => {
-  const { _id } = req.params;
+  const  {_id}  = req.params;
   try {
     const boxdeleted = await box.findOneAndDelete({ _id });
     res.json({ msg: "box deleted", boxdeleted });
