@@ -9,3 +9,12 @@ export const getAllUsers = () => (dispatch) => {
       console.log(err);
     });
 };
+
+export const deleteuser = ( _id ) => (dispatch) => {
+    axios
+      .delete(`/api/deleteuser/${_id}`)
+      .then((res) => dispatch(getAllUsers()))
+      .catch((err) => {
+        console.log(err);
+      });
+  };

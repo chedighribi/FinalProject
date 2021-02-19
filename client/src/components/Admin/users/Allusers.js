@@ -10,6 +10,9 @@ const Allusers =()=>{
     useEffect(() => {
         allusers();
       }, []);
+      const handledelete =(id)=>{
+          dispatch(deleteuser(id))
+      }
     const t = useSelector(state => state.usersReducer.allusers.allUsers);
     console.log(t)
     return (
