@@ -1,6 +1,7 @@
 import React,{useEffect} from 'react';
 import {useSelector,useDispatch} from 'react-redux';
 import {getOrder} from '../../../redux/actions/myorderAction'
+import OrderCom from './orderCom';
 
 
 const Allorder =()=>{
@@ -11,8 +12,8 @@ const Allorder =()=>{
       }, []);
     const t = useSelector(state => state.myorderReducer.allorder);
     return (
-        <div>
-            {t && t.map((el)=> <h3>{el.adress}</h3>) }
+        <div className='listTraiteur'>
+            {t && t.map((el)=> <OrderCom el={el}/> ) }
         </div>
     )
 }
