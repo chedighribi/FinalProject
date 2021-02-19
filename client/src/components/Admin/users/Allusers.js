@@ -1,7 +1,7 @@
 import React,{useEffect} from 'react';
 import {useSelector,useDispatch} from 'react-redux';
 import {getAllUsers} from '../../../redux/actions/allusersAction'
-import {deleteuser} from '../../../redux/actions/allusersAction'
+import AllusersCom from './AllusersCom';
 
 
 const Allusers =()=>{
@@ -16,8 +16,8 @@ const Allusers =()=>{
     const t = useSelector(state => state.usersReducer.allusers.allUsers);
     console.log(t)
     return (
-        <div>
-            {t && t.map((el)=> <div><h3>{el.adress}</h3><button >Delete</button></div>) }
+        <div className='listContacts'>
+            {t && t.map((el)=> <AllusersCom el={el} />) }
         </div>
     )
 }

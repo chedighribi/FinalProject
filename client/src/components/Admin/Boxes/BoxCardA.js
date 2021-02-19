@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 import { deleteBox } from "../../../redux/actions/boxAction";
 import { editBox } from "../../../redux/actions/boxAction";
 import EditBox from "./Editbox";
+import { BorderColor } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -75,11 +76,13 @@ console.log(el.img)
         <CardActions disableSpacing>
           <div style={{ display: "flex", justifyContent: "space-around" }}>
             <Button
-              color="danger"
               style={{
                 width: "100px",
                 marginRight: "90px",
                 marginLeft: "20px",
+                backgroundColor:'beige',
+                color:'#f36846',
+                BorderColor:'#f36846'
               }}
               onClick={handleDeleteBox}
             >
