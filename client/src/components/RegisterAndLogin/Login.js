@@ -14,7 +14,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { loginUser, resetAuthErrors } from "../../redux/actions/userAction";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { Alert } from "reactstrap";
 
 function Copyright() {
@@ -55,14 +55,16 @@ export default function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const dispatch = useDispatch();
-  const history = useHistory();
   const errors = useSelector((state) => state.authReducer.errors);
+  const isAuth = useSelector((state) => state.authReducer.isAuth);
 
   const handleLogin = (e) => {
     const log = { email, password };
     dispatch(loginUser(log));
-    !errors ? history.push("/") : e.preventDefault();
+    e.preventDefault();
+    setIsSubmitted(true);
   };
 
   const resetErrors = () => {
@@ -71,6 +73,7 @@ export default function Login() {
 
   useEffect(() => {
     resetErrors();
+    setIsSubmitted(false);
   }, []);
 
   return (
@@ -127,6 +130,9 @@ export default function Login() {
             <span style={{ color: "beige" }}>Sign In</span>
           </Button>
           {errors && errors.map((el) => <Alert color="danger">{el.msg}</Alert>)}
+          {!isAuth && isSubmitted && (
+            <Alert color="danger">bad credentials</Alert>
+          )}
           <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">
@@ -140,6 +146,7 @@ export default function Login() {
             </Grid>
           </Grid>
         </form>
+        {isAuth && <Redirect to="/" />}
       </div>
       <Box mt={8}>
         <Copyright />
