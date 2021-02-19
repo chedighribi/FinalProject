@@ -18,4 +18,7 @@ export const TATA_ERRORS = "TATA_ERRORS";
 export const RESET_TATA_ERRORS = "RESET_TATA_ERRORS";
 export const RESET_AUTH_ERRORS = "RESET_AUTH_ERRORS";
 export const RESET_MY_ORDERS ="RESET_MY_ORDERS";
+export const RESET_SHOP ="RESET_SHOP";
+export const GET_ALL_ORDERS ="GET_ALL_ORDERS";
+
 
