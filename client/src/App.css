@@ -488,3 +488,16 @@ header h1 {
   flex-wrap: wrap;
   justify-content: space-around;
 }
+
+/*boh*/
+.tableList {
+  width: 90%;
+  display: flex;
+  flex-wrap: unset;
+  justify-content: center;
+}
+
+.tableOne {
+  margin: 20px !important;
+  width: 90% !important;
+}
