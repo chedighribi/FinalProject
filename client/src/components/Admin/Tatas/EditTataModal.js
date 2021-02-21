@@ -11,6 +11,7 @@ const EditTataModal = ({ el }) => {
   const [editedBio, setEditedBio] = useState(el.bio);
   const [editedSpeciality, setEditedSpeciality] = useState(el.speciality);
   const [editedGoal, setEditedGoal] = useState(el.goal);
+  const [editedimg, setEditedimg] = useState(el.img);
 
   const dispatch = useDispatch();
 
@@ -22,6 +23,7 @@ const EditTataModal = ({ el }) => {
     setEditedBio(el.bio);
     setEditedSpeciality(el.speciality);
     setEditedGoal(el.goal);
+    setEditedimg(el.img);
   };
 
   const handleEditTata = () => {
@@ -32,6 +34,7 @@ const EditTataModal = ({ el }) => {
       bio: editedBio,
       speciality: editedSpeciality,
       goal: editedGoal,
+      img : editedimg
     };
     dispatch(editTata(el._id, editedTata));
     toggle();
@@ -81,6 +84,12 @@ const EditTataModal = ({ el }) => {
             <input
               value={editedGoal}
               onChange={(e) => setEditedGoal(e.target.value)}
+              type="text"
+            />
+            <label>img</label>
+            <input
+              value={editedimg}
+              onChange={(e) => setEditedimg(e.target.value)}
               type="text"
             />
           </form>
