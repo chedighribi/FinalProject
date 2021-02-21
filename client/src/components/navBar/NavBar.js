@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { logout } from "../../redux/actions/userAction";
 import { useDispatch } from "react-redux";
 import { resetorder } from "../../redux/actions/myorderAction";
+import DropD from './DropDown'
 
 
 export default function NavBar() {
@@ -37,9 +38,7 @@ export default function NavBar() {
               </Link>
             </Typography>
             {/* <BrowserRouter> */}
-            <div>
-              {user.fullname}
-            </div>
+            <DropD user={user.fullname} />
             <div>
               <Link className="linkNavbar" to="/managetata">
                 <Button color="inherit">Tatta</Button>
