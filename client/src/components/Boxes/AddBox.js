@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addBox } from "../../redux/actions/boxAction";
 import { useHistory } from "react-router-dom";
+import TextField from "@material-ui/core/TextField";
+import { Button } from "reactstrap";
+
 
 const AddBox = () => {
   const [price, setPrice] = useState(0);
@@ -18,37 +21,78 @@ const AddBox = () => {
   return (
     <div>
       <form>
-        <label>price</label>
-        <input
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-          type="text"
-        />
-        <label>name</label>
-        <input
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          type="text"
-        />
-        <label>Photo</label>
-        <input
-          value={img}
-          onChange={(e) => setImg(e.target.value)}
-          type="text"
-        />
-        <label>ingredient</label>
-        <input
-          value={ingredient}
-          onChange={(e) => setIngredient(e.target.value)}
-          type="text"
-        />
-        <label>madeby</label>
-        <input
-          value={madeby}
-          onChange={(e) => setMadeby(e.target.value)}
-          type="text"
-        />
-        <button onClick={addNewBox}>Submit</button>
+      <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="Price"
+                  label="Price"
+                  name="Price"
+                  autoComplete="Price"
+                  autoFocus
+                  type='number'
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
+                />
+
+            <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="Name"
+                  label="Name"
+                  name="Name"
+                  autoComplete="Name"
+                  autoFocus
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+
+
+            <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="Photo"
+                  label="Photo"
+                  name="Photo"
+                  autoComplete="Photo"
+                  autoFocus
+                  value={img}
+                  onChange={(e) => setImg(e.target.value)}
+                />
+
+            <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="Ingredient"
+                  label="Ingredient"
+                  name="Ingredient"
+                  autoComplete="Ingredient"
+                  autoFocus
+                  value={ingredient}
+                  onChange={(e) => setIngredient(e.target.value)}
+                />
+        <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="Madeby"
+                  label="Madeby"
+                  name="Madeby"
+                  autoComplete="Madeby"
+                  autoFocus
+                  value={madeby}
+                  onChange={(e) => setMadeby(e.target.value)}
+                />
+        <Button style={{color:'orange', borderColor:'orange', backgroundColor:'beige'}} onClick={addNewBox}>Submit</Button>
+
       </form>
     </div>
   );

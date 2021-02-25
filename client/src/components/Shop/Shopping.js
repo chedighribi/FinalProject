@@ -37,6 +37,7 @@ const Shopping=()=>{
           <th>Total {total(t)} .DT</th>
         </tr>
       </thead>
+      
     </Table>
 
             <input type='text' placeholder='spécial ?' onChange={(e)=>setSpecial(e.target.value)} value={special} />

@@ -18,7 +18,7 @@ const TataList = () => {
       <Input
         bsSize="lg"
         type="text"
-        placeholder="what type of cuisine ?"
+        placeholder="What type of cuisine ?"
         onChange={(e) => setFilter(e.target.value)}
         value={filter}
         style={{
@@ -30,8 +30,7 @@ const TataList = () => {
       />
       <Link to="/addtata">
         <Button
-          style={{ marginBottom: "30px" }}
-          color="primary"
+          style={{ marginBottom: "30px", backgroundColor:'beige',color:"#f36846" }}
           size="lg"
           block
         >

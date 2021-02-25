@@ -509,3 +509,8 @@ header h1 {
 .MuiStepIcon-root.MuiStepIcon-completed {
   color: #719a7c !important;
 }
+
+.form-control:focus {
+  border-color: #f36846 !important;
+  box-shadow: 0 0 0 0.2rem hsl(28, 92%, 67%) !important;
+}

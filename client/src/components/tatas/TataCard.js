@@ -57,7 +57,7 @@ export default function TataCard({ el }) {
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar} style={{ backgroundColor: "#f36846" }}>
-            {el.name[0]}
+            {el.name[5]}
           </Avatar>
         }
     
