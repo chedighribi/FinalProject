@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addTata, resetTataErrors } from "../../redux/actions/tataAction";
 import { Redirect } from "react-router-dom";
-import { Alert, FormGroup, Label, Input, Button } from "reactstrap";
+import TextField from "@material-ui/core/TextField";
+import { Alert, Button } from "reactstrap";
 
 const AddTata = () => {
   const [name, setName] = useState("");
   const [adress, setAdress] = useState("");
-  const [phone, setPhone] = useState(0);
+  const [phone, setPhone] = useState();
   const [bio, setBio] = useState("");
   const [speciality, setSpeciality] = useState("");
   const [goal, setGoal] = useState("");
@@ -42,63 +43,100 @@ const AddTata = () => {
       //   alignContent: "center",
       // }}
       >
-        <FormGroup>
-          <Label>Nom et prénom</Label>
-          <Input
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            type="text"
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label>Adresse</Label>
-          <Input
-            value={adress}
-            onChange={(e) => setAdress(e.target.value)}
-            type="text"
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label>Photo</Label>
-          <Input
-            value={img}
-            onChange={(e) => setImg(e.target.value)}
-            type="text"
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label>Numero de téléphone</Label>
-          <Input
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            type="number"
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label>Biographie</Label>
-          <Input
-            value={bio}
-            onChange={(e) => setBio(e.target.value)}
-            type="text"
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label>Specialité</Label>
-          <Input
-            value={speciality}
-            onChange={(e) => setSpeciality(e.target.value)}
-            type="text"
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label>Objectif</Label>
-          <Input
-            value={goal}
-            onChange={(e) => setGoal(e.target.value)}
-            type="text"
-          />
-        </FormGroup>
-        <Button color="info" onClick={addNewTata}>
+        <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="Name"
+              label="Name"
+              name="Name"
+              autoComplete="Name"
+              autoFocus
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+
+    <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="Adress"
+                  label="Adress"
+                  name="Adress"
+                  autoComplete="Adress"
+                  autoFocus
+                  value={adress}
+                  onChange={(e) => setAdress(e.target.value)}
+                />
+      
+        <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="Image Link"
+              label="Image Link"
+              name="Image Link"
+              autoComplete="Image Link"
+              autoFocus
+              value={img}
+              onChange={(e) => setImg(e.target.value)}
+            />
+           <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="Phone"
+              label="Phone"
+              name="Phone"
+              autoComplete="Phone"
+              autoFocus
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="Biographie"
+              label="Biographie"
+              name="Biographie"
+              autoComplete="Biographie"
+              autoFocus
+              value={bio}
+              onChange={(e) => setBio(e.target.value)}
+            />
+        <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="Specialité"
+              label="Specialité"
+              name="Specialité"
+              autoComplete="Specialité"
+              autoFocus
+              value={speciality}
+              onChange={(e) => setSpeciality(e.target.value)}
+            />
+        <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="Goal"
+              label="Goal"
+              name="Goal"
+              autoComplete="Goal"
+              autoFocus
+              value={goal}
+              onChange={(e) => setGoal(e.target.value)}
+            />
+        <Button style={{color:'orange', borderColor:'orange', backgroundColor:'beige'}} onClick={addNewTata}>
           Submit
         </Button>
       </form>

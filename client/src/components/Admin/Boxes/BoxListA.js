@@ -21,7 +21,7 @@ const BoxListA = () => {
       <Input
         bsSize="lg"
         type="text"
-        placeholder="filter by name"
+        placeholder="What dish ?"
         onChange={(e) => setFilter(e.target.value)}
         value={filter}
         style={{
@@ -33,12 +33,11 @@ const BoxListA = () => {
       />
       <Link to="/addbox">
         <Button
-          style={{ marginBottom: "30px" }}
-          color="primary"
+          style={{ marginBottom: "30px", backgroundColor:'beige',color:"#f36846" }}
           size="lg"
           block
         >
-          add box
+          Add New Box
         </Button>
       </Link>
       <div className="tataCard">
